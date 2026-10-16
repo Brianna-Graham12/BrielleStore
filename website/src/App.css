@@ -1,0 +1,511 @@
+
+/*
+    BRIELLE SKINCARE WEBSITE
+    Main CSS Stylesheet
+
+    CSS controls the appearance of our website:
+    - Colors
+    - Fonts
+    - Spacing
+    - Layout
+    - Responsive design
+
+    @author Brianna Graham 
+*/
+
+
+/* =====================================
+   1. GLOBAL STYLING
+===================================== */
+
+/*
+    The body represents the entire webpage.
+
+    margin: 0 removes the browser's default
+    outer spacing.
+
+    background-color sets the page background.
+
+    color sets the default text color.
+
+    font-family determines the font used.
+*/
+
+body {
+    margin: 0;
+    background-color: #FAF7F2;
+    color: #302923;
+    font-family: Arial, sans-serif;
+}
+
+/*
+    Apply border-box sizing to all elements.
+
+    This means padding and borders are
+    included in an element's specified width.
+*/
+
+* {
+    box-sizing: border-box;
+}
+
+/*
+    Smooth scrolling when navigating
+    between sections.
+*/
+
+html {
+    scroll-behavior: smooth;
+}
+
+/*
+    Remove the default underline
+    from hyperlinks.
+*/
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* =====================================
+   2. NAVIGATION BAR
+===================================== */
+
+/*
+    display: flex arranges elements
+    horizontally by default.
+
+    justify-content: space-between places
+    the logo on the left and links on the right.
+
+    align-items: center vertically
+    aligns the elements.
+
+    padding creates space inside the navbar.
+*/
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 25px 8%;
+
+    background-color: #FFFDF9;
+}
+
+/*
+    Style the Brielle logo.
+
+    letter-spacing increases the space
+    between individual characters.
+*/
+
+.navbar h2 {
+    font-family: Georgia, serif;
+    font-size: 28px;
+    font-weight: normal;
+    letter-spacing: 5px;
+    margin: 0;
+}
+
+/*
+    Arrange navigation links in a row.
+
+    gap sets the space between links.
+*/
+
+.navbar nav {
+    display: flex;
+    gap: 30px;
+}
+
+/*
+    Style navigation links.
+*/
+
+.navbar a {
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+/*
+    :hover applies a style when the
+    user places their cursor over a link.
+*/
+
+.navbar a:hover {
+    color: #A78363;
+}
+
+
+/* =====================================
+   3. HERO SECTION
+===================================== */
+
+/*
+    The hero is the main introductory
+    section of the website.
+
+    text-align: center centers the text.
+
+    padding creates space around the content.
+*/
+
+.hero {
+    background-color: #E9DFD1;
+
+    text-align: center;
+
+    padding: 120px 20px;
+}
+
+/*
+    Style the small location text.
+*/
+
+.hero p {
+    font-size: 12px;
+    letter-spacing: 4px;
+    margin-bottom: 25px;
+}
+
+/*
+    Style the main website heading.
+
+    clamp() makes font size responsive.
+
+    42px = minimum size
+    6vw = size relative to screen width
+    72px = maximum size
+*/
+
+.hero h1 {
+    font-family: Georgia, serif;
+    font-size: clamp(42px, 6vw, 72px);
+    font-weight: normal;
+    margin: 15px 0;
+}
+
+/*
+    Style the brand tagline.
+*/
+
+.hero h3 {
+    font-size: 18px;
+    font-weight: normal;
+    margin-bottom: 35px;
+}
+
+/*
+    Style our Shop Collection link
+    to look like a button.
+*/
+
+.shop-button {
+    display: inline-block;
+
+    background-color: #302923;
+    color: white;
+
+    padding: 16px 32px;
+
+    font-size: 14px;
+    letter-spacing: 1px;
+
+    transition: background-color 0.3s ease;
+}
+
+/*
+    Change button appearance on hover.
+*/
+
+.shop-button:hover {
+    background-color: #755B48;
+}
+
+
+/* =====================================
+   4. PRODUCT COLLECTION
+===================================== */
+
+/*
+    Add spacing around the shop section
+    and center its heading.
+*/
+
+.products {
+    padding: 90px 8%;
+    text-align: center;
+}
+
+/*
+    Style our section heading.
+*/
+
+.products h2 {
+    font-family: Georgia, serif;
+    font-size: 40px;
+    font-weight: normal;
+}
+
+/*
+    CSS Grid organizes products into columns.
+
+    repeat(3, 1fr) creates 3 equal columns.
+
+    gap adds space between product cards.
+*/
+
+.product-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 25px;
+    margin-top: 45px;
+}
+
+/*
+    Style each individual product card.
+
+    padding creates inner spacing.
+
+    border gives each product a subtle outline.
+*/
+
+.product-grid article {
+    background-color: #FFFDF9;
+
+    padding: 35px 20px;
+
+    border: 1px solid #E8DFD5;
+
+    min-height: 230px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    transition: transform 0.3s ease;
+}
+
+/*
+    Slightly raise a product card
+    when the cursor hovers over it.
+*/
+
+.product-grid article:hover {
+    transform: translateY(-5px);
+}
+
+/*
+    Style product names.
+*/
+
+.product-grid h3 {
+    font-family: Georgia, serif;
+    font-size: 22px;
+    font-weight: normal;
+}
+
+/*
+    Style product descriptions.
+*/
+
+.product-grid article p {
+    font-size: 14px;
+    color: #74685F;
+}
+
+
+/* =====================================
+   5. ABOUT SECTION
+===================================== */
+
+/*
+    Give the About section a contrasting
+    background and centered layout.
+*/
+
+.about {
+    background-color: #EEE5D9;
+
+    padding: 100px 20px;
+
+    text-align: center;
+}
+
+/*
+    Style the About heading.
+*/
+
+.about h2 {
+    font-family: Georgia, serif;
+    font-size: 40px;
+    font-weight: normal;
+}
+
+/*
+    max-width prevents text from
+    stretching too far across the screen.
+
+    margin: auto centers the paragraph.
+*/
+
+.about p {
+    max-width: 600px;
+
+    margin: 0 auto;
+
+    line-height: 1.8;
+
+    font-size: 16px;
+}
+
+
+/* =====================================
+   6. FOOTER
+===================================== */
+
+/*
+    Style the bottom of the website.
+*/
+
+footer {
+    background-color: #302923;
+    color: #FFFFFF;
+
+    text-align: center;
+
+    padding: 35px 20px;
+
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+
+/* =====================================
+   7. RESPONSIVE DESIGN
+===================================== */
+
+/*
+    A media query applies CSS only
+    when its condition is true.
+
+    max-width: 768px targets screens
+    that are 768 CSS pixels wide or less.
+
+    This helps the website look good
+    on phones and narrower tablets.
+*/
+
+@media (max-width: 768px) {
+
+    /*
+        Reduce navbar spacing
+        for smaller screens.
+    */
+
+    .navbar {
+        padding: 20px;
+        gap: 15px;
+    }
+
+    .navbar h2 {
+        font-size: 20px;
+        letter-spacing: 3px;
+    }
+
+    .navbar nav {
+        gap: 12px;
+    }
+
+    .navbar a {
+        font-size: 12px;
+    }
+
+    /*
+        Reduce hero padding.
+    */
+
+    .hero {
+        padding: 85px 20px;
+    }
+
+    /*
+        Switch product grid from
+        3 columns to 1 column.
+    */
+
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /*
+        Reduce spacing on smaller screens.
+    */
+
+    .products {
+        padding: 60px 20px;
+    }
+
+    .about {
+        padding: 70px 20px;
+    }
+}
+
+/*
+    Respect visitors who prefer
+    reduced motion.
+*/
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .navbar a,
+    .shop-button,
+    .product-grid article {
+        transition: none;
+    }
+}
+
+/*
+    BRIELLE WEBSITE IMPROVEMENTS
+
+    Fix heading colors and make the website
+    use the full browser width.
+*/
+
+/* Remove Vite's default layout restrictions. */
+#root {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Make the Brielle logo visible. */
+.navbar h2 {
+    color: #302923;
+}
+
+/* Make the hero heading dark brown. */
+.hero h1 {
+    color: #302923;
+}
+
+/* Make the collection heading visible. */
+.products h2 {
+    color: #302923;
+}
+
+/* Keep the hero text centered. */
+.hero {
+    text-align: center;
+}
