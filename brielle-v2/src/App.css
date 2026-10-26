@@ -1,0 +1,560 @@
+
+/*
+    BRIELLE SKINCARE WEBSITE
+
+    File: App.css
+    Author: Brianna Graham
+
+    Description:
+    This file contains the styling for the main
+    Brielle skincare website.
+
+    The website includes a fixed navigation bar,
+    cinematic homepage, product collections,
+    fragrance collections, brand story,
+    contact section, and footer.
+
+    Design:
+    Minimal luxury skincare aesthetic using
+    chocolate brown, ivory, and warm neutral colors.
+
+    Future Implementations:
+    Interactive 3D product displays, scroll animations,
+    and individual product pages.
+*/
+
+
+/*
+    Main Website
+
+    Sets the background color, text color,
+    and minimum height of the website.
+*/
+
+.website {
+    min-height: 100vh;
+    background-color: #38251D;
+    color: #F7F2EA;
+    overflow-x: clip;
+}
+
+
+/*
+    Navigation Bar
+
+    Remains fixed at the top of the screen
+    while visitors scroll through the website.
+
+    z-index keeps the navigation above the
+    homepage and other content sections.
+*/
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    z-index: 1000;
+    min-height: 85px;
+    padding: 20px 5%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+
+    background-color: rgba(56, 37, 29, 0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    z-index: 1000;
+}
+
+
+/*
+    Brielle Logo
+
+    Displays the brand name on the left
+    side of the navigation bar.
+*/
+
+.logo {
+    font-family: Georgia, serif;
+    font-size: 28px;
+    font-weight: 400;
+    letter-spacing: 5px;
+
+    color: #F7F2EA;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+
+/*
+    Navigation Links
+
+    Flexbox arranges the links horizontally.
+*/
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: #F7F2EA;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #D5B89D;
+}
+
+
+/*
+    Shopping Bag Button
+
+    Will eventually open Brielle's
+    interactive shopping cart.
+*/
+
+.cart-button {
+    padding: 11px 18px;
+
+    background-color: transparent;
+    color: #F7F2EA;
+
+    border: 1px solid #F7F2EA;
+
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+
+    white-space: nowrap;
+    cursor: pointer;
+
+    transition: background-color 0.3s ease,
+                color 0.3s ease;
+}
+
+.cart-button:hover {
+    background-color: #F7F2EA;
+    color: #38251D;
+}
+
+
+/*
+    Homepage Hero
+
+    Creates a full-screen introduction to Brielle.
+
+    The chocolate background will eventually
+    feature an animated 3D body crème jar.
+*/
+
+.hero {
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    padding: 130px 6% 80px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #38251D;
+    color: #F7F2EA;
+
+    text-align: center;
+    scroll-margin-top: 85px;
+}
+
+
+/*
+    Homepage Heading
+*/
+
+.hero h2 {
+    margin: 0 0 25px;
+
+    font-family: Georgia, serif;
+    font-size: clamp(48px, 7vw, 100px);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: 1px;
+}
+
+
+/*
+    Homepage Description
+*/
+
+.hero p {
+    max-width: 550px;
+    margin: 0;
+
+    font-family: Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.8;
+
+    color: #E2D2C4;
+}
+
+
+/*
+    Homepage Button
+
+    Allows visitors to explore the
+    Brielle product collection.
+*/
+
+.hero-button {
+    display: inline-block;
+
+    margin-top: 35px;
+    padding: 16px 30px;
+
+    background-color: transparent;
+    border: 1px solid #F7F2EA;
+
+    color: #F7F2EA;
+    text-decoration: none;
+
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+
+    transition: background-color 0.3s ease,
+                color 0.3s ease;
+}
+
+.hero-button:hover {
+    background-color: #F7F2EA;
+    color: #38251D;
+}
+
+
+/*
+    General Content Sections
+
+    Used for the Shop, Explore Our Scents,
+    and Our Story sections.
+
+    Each section has enough space to support
+    future product images and animations.
+*/
+
+.content-section {
+    min-height: 75vh;
+    padding: 130px 6% 90px;
+
+    background-color: #F7F2EA;
+    color: #38251D;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    scroll-margin-top: 85px;
+}
+
+
+/*
+    Content Section Headings
+*/
+
+.content-section h2 {
+    margin: 0 0 25px;
+
+    font-family: Georgia, serif;
+    font-size: clamp(42px, 6vw, 76px);
+    font-weight: 400;
+    line-height: 1.15;
+}
+
+
+/*
+    Content Section Descriptions
+*/
+
+.content-section p {
+    max-width: 600px;
+    margin: 0;
+
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+
+    color: #70584A;
+}
+
+
+/*
+    Contact Section
+
+    Creates an elegant contact area where
+    customers can reach Brielle.
+
+    Uses a slightly warmer background
+    to distinguish it from other sections.
+*/
+
+.contact-section {
+    min-height: 70vh;
+    padding: 130px 6% 100px;
+
+    background-color: #EDE1D2;
+    color: #38251D;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    scroll-margin-top: 85px;
+}
+
+
+/*
+    Contact Content
+
+    Prevents the text from stretching
+    too far across the screen.
+*/
+
+.contact-content {
+    width: 100%;
+    max-width: 650px;
+}
+
+
+/*
+    Contact Subtitle
+*/
+
+.contact-subtitle {
+    margin: 0 0 25px;
+
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    line-height: 1.8;
+
+    color: #70584A;
+}
+
+
+/*
+    Contact Heading
+*/
+
+.contact-content h2 {
+    margin: 0 0 25px;
+
+    font-family: Georgia, serif;
+    font-size: clamp(42px, 6vw, 76px);
+    font-weight: 400;
+    line-height: 1.15;
+}
+
+
+/*
+    Contact Description
+*/
+
+.contact-description {
+    max-width: 550px;
+    margin: 0 auto 40px;
+
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.9;
+
+    color: #70584A;
+}
+
+
+/*
+    Contact Button
+
+    Opens the visitor's email application
+    using the mailto link in App.jsx.
+*/
+
+.contact-button {
+    display: inline-block;
+    padding: 16px 35px;
+
+    background-color: transparent;
+    border: 1px solid #38251D;
+
+    color: #38251D;
+    text-decoration: none;
+
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+
+    transition: background-color 0.3s ease,
+                color 0.3s ease;
+}
+
+.contact-button:hover {
+    background-color: #38251D;
+    color: #F7F2EA;
+}
+
+
+/*
+    Footer
+
+    Displays Brielle's brand information
+    at the bottom of the website.
+*/
+
+.footer {
+    padding: 45px 6%;
+
+    background-color: #38251D;
+    color: #F7F2EA;
+
+    text-align: center;
+}
+
+.footer p {
+    margin: 10px 0;
+
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    line-height: 1.8;
+    letter-spacing: 1px;
+}
+
+
+/*
+    Tablet Responsiveness
+
+    Adjusts the navigation layout
+    for smaller screens and iPads.
+*/
+
+@media (max-width: 1000px) {
+
+    .navbar {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 18px 5%;
+    }
+
+    .nav-links {
+        order: 3;
+        width: 100%;
+        gap: 18px;
+    }
+
+    .hero {
+        padding-top: 170px;
+    }
+
+    .content-section,
+    .contact-section {
+        padding-top: 170px;
+        scroll-margin-top: 140px;
+    }
+}
+
+
+/*
+    Mobile Responsiveness
+
+    Adjusts spacing and typography
+    for smaller mobile screens.
+*/
+
+@media (max-width: 600px) {
+
+    .navbar {
+        gap: 15px;
+        padding: 15px 4%;
+    }
+
+    .logo {
+        font-size: 23px;
+        letter-spacing: 4px;
+    }
+
+    .nav-links {
+        gap: 12px 16px;
+    }
+
+    .nav-links a {
+        font-size: 11px;
+    }
+
+    .cart-button {
+        padding: 9px 12px;
+        font-size: 11px;
+    }
+
+    .hero {
+        padding: 190px 7% 80px;
+    }
+
+    .hero h2 {
+        font-size: clamp(42px, 12vw, 65px);
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    .content-section,
+    .contact-section {
+        min-height: 65vh;
+        padding: 190px 7% 80px;
+    }
+
+    .content-section h2,
+    .contact-content h2 {
+        font-size: clamp(38px, 10vw, 55px);
+    }
+
+    .content-section p,
+    .contact-description {
+        font-size: 15px;
+    }
+
+    .footer {
+        padding: 35px 7%;
+    }
+}
+
+
+/*
+    Reduced Motion
+
+    Disables smooth transitions for visitors
+    who prefer reduced animation.
+*/
+
+@media (prefers-reduced-motion: reduce) {
+
+    .nav-links a,
+    .cart-button,
+    .hero-button,
+    .contact-button {
+        transition: none;
+    }
+}

@@ -1,0 +1,453 @@
+
+/*
+    BRIELLE SKINCARE WEBSITE
+
+    File: LoadingScreen.css
+    Author: Brianna Graham
+
+    Description:
+    Contains the styling for Brielle's introductory
+    loading screen and water-inspired reveal.
+
+    The loading screen includes a white background,
+    a light-blue counter, and an animated water
+    progress bar.
+
+    Once the counter reaches 100, an organic opening
+    expands from the center of the white screen.
+
+    The opening continues beyond the edges of the
+    viewport to reveal the Brielle homepage.
+
+    React controls the size of the opening to
+    prevent bouncing or reversing.
+*/
+
+
+/*
+    Loading Screen
+
+    Covers the entire browser window while the
+    introductory animation is displayed.
+
+    The screen remains above the navigation bar,
+    homepage, and other website sections.
+*/
+
+.loading-screen {
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100dvh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: transparent;
+
+    z-index: 9999;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+
+/*
+    SVG Loading Mask
+
+    Displays the white paper layer covering
+    the homepage.
+
+    The SVG contains an expanding transparent
+    opening controlled by LoadingScreen.jsx.
+*/
+
+.loading-mask {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 0;
+    pointer-events: none;
+}
+
+
+/*
+    White Paper Layer
+
+    Covers the homepage until the breakaway
+    animation reveals the website underneath.
+*/
+
+.breakaway-paper {
+    fill: #FFFFFF;
+}
+
+
+/*
+    Organic Paper Opening
+
+    Creates a transparent opening through
+    the white paper layer.
+
+    React updates the SVG transform directly.
+
+    No CSS scale animation is applied because
+    React already controls the opening size.
+*/
+
+.paper-opening {
+    fill: #000000;
+}
+
+
+/*
+    Loading Content
+
+    Holds the loading number, progress bar,
+    and loading message.
+
+    Flexbox places the elements in a column
+    and prevents overlapping.
+*/
+
+.loading-content {
+    position: relative;
+
+    width: min(350px, 80%);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 20px;
+    text-align: center;
+
+    z-index: 2;
+    pointer-events: none;
+}
+
+
+/*
+    Loading Number
+
+    Displays the current loading percentage
+    from 0 to 100.
+
+    The font size adjusts according to the
+    visitor's screen size.
+*/
+
+.loading-number {
+    margin: 0;
+    padding: 0;
+
+    font-family: Georgia, serif;
+    font-size: clamp(70px, 12vw, 140px);
+    font-weight: 400;
+    line-height: 1.2;
+
+    color: #A4D6EE;
+    font-variant-numeric: tabular-nums;
+}
+
+
+/*
+    Water Progress Bar
+
+    Creates a thick, light-blue loading bar
+    underneath the percentage.
+
+    The number and bar use the same React
+    progress value, keeping them synchronized.
+*/
+
+.loading-track {
+    position: relative;
+
+    width: 100%;
+    height: 12px;
+
+    margin-top: 15px;
+
+    background-color: #E8F3F9;
+    border-radius: 30px;
+
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+
+/*
+    Water Fill
+
+    The width increases from 0 to 100 percent
+    according to the progress state in React.
+
+    The gradient creates a water-like appearance.
+
+    No width transition is used so the bar
+    does not lag behind the counter.
+*/
+
+.loading-fill {
+    position: relative;
+
+    width: 0%;
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        #A4D6EE 0%,
+        #76C6E8 45%,
+        #B6E8F7 100%
+    );
+
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+
+/*
+    Water Wave
+
+    Creates moving light reflections inside
+    the blue progress bar.
+
+    The reflections move from left to right
+    to simulate flowing water.
+*/
+
+.water-wave {
+    position: absolute;
+    inset: 0;
+
+    width: 200%;
+    height: 100%;
+
+    background: repeating-linear-gradient(
+        115deg,
+        transparent 0px,
+        rgba(255, 255, 255, 0.12) 12px,
+        rgba(255, 255, 255, 0.45) 18px,
+        transparent 34px
+    );
+
+    animation: water-flow 1.4s linear infinite;
+}
+
+
+/*
+    Water Shine
+
+    Adds a glossy reflection across the
+    top of the progress bar.
+*/
+
+.water-shine {
+    position: absolute;
+
+    top: 1px;
+    left: 3%;
+    right: 3%;
+
+    height: 35%;
+
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 30px;
+}
+
+
+/*
+    Water Flow Animation
+
+    Moves the highlight pattern continuously
+    across the progress bar.
+*/
+
+@keyframes water-flow {
+
+    from {
+        transform: translateX(-50%);
+    }
+
+    to {
+        transform: translateX(0%);
+    }
+}
+
+
+/*
+    Loading Label
+
+    Displays the loading message below
+    the progress bar.
+*/
+
+.loading-label {
+    margin: 0;
+
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 5px;
+
+    color: #A4D6EE;
+}
+
+
+/*
+    Loading Content Reveal
+
+    Fades the counter, progress bar, and
+    loading text when the breakaway begins.
+
+    The elements disappear while the white
+    screen continues opening outward.
+*/
+
+.loading-reveal .loading-content {
+    animation: fade-loading 0.35s ease-out forwards;
+}
+
+@keyframes fade-loading {
+
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+
+/*
+    Water Impact
+
+    Creates a light-blue ripple at the center
+    when the loading counter reaches 100.
+
+    The ripple expands outward and fades.
+*/
+
+.water-impact {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 80px;
+    height: 80px;
+
+    border: 3px solid rgba(164, 214, 238, 0.8);
+    border-radius: 50%;
+
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+
+    z-index: 1;
+    pointer-events: none;
+}
+
+
+/*
+    Water Impact Animation
+
+    Expands the ripple from the center.
+
+    The ripple moves outward without shrinking
+    or reversing.
+*/
+
+.loading-reveal .water-impact {
+    animation: water-impact-expand 0.7s ease-out forwards;
+}
+
+@keyframes water-impact-expand {
+
+    0% {
+        opacity: 0.8;
+        transform: translate(-50%, -50%) scale(0.2);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(4);
+    }
+}
+
+
+/*
+    Tablet Responsiveness
+
+    Adjusts spacing for iPads and
+    smaller laptop screens.
+*/
+
+@media (max-width: 1000px) {
+
+    .loading-content {
+        width: min(350px, 75%);
+    }
+
+    .loading-number {
+        font-size: clamp(80px, 13vw, 135px);
+    }
+}
+
+
+/*
+    Mobile Responsiveness
+
+    Adjusts the loading number, progress bar,
+    and spacing for mobile screens.
+*/
+
+@media (max-width: 600px) {
+
+    .loading-content {
+        width: 78%;
+        gap: 18px;
+    }
+
+    .loading-number {
+        font-size: clamp(70px, 18vw, 110px);
+    }
+
+    .loading-track {
+        height: 10px;
+        margin-top: 10px;
+    }
+
+    .loading-label {
+        font-size: 9px;
+        letter-spacing: 4px;
+    }
+
+}
+
+
+/*
+    Reduced Motion
+
+    Disables decorative water movement
+    for visitors who prefer less animation.
+*/
+
+@media (prefers-reduced-motion: reduce) {
+
+    .water-wave {
+        animation: none;
+    }
+
+    .loading-reveal .loading-content,
+    .loading-reveal .water-impact {
+        animation-duration: 0.01ms;
+    }
+
+}
