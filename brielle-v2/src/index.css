@@ -1,0 +1,50 @@
+/*
+    BRIELLE SKINCARE WEBSITE
+
+    File: index.css
+    Author: Brianna Graham
+
+    Description:
+    Contains the global styling for the Brielle website.
+
+    Removes default browser spacing and ensures
+    the website fills the entire browser window.
+*/
+
+/* Apply consistent sizing to all elements */
+* {
+    box-sizing: border-box;
+}
+
+/* Enable smooth scrolling between sections */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Remove default spacing */
+html,
+body,
+#root {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+}
+
+/* Set the website's default typography */
+body {
+    min-width: 320px;
+    font-family: Arial, sans-serif;
+    background-color: #38251D;
+}
+
+/* Allow React to fill the viewport */
+#root {
+    min-height: 100vh;
+}
+
+/* Prevent images from overflowing containers */
+img {
+    max-width: 100%;
+    display: block;
+}
