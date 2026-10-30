@@ -5,32 +5,31 @@
     File: App.jsx
     Author: Brianna Graham
 
+    Description:
     This file contains the main React component
     responsible for displaying the Brielle website.
 
     The App component connects the loading screen,
-    navigation bar, homepage, and contact section.
+    navigation bar, homepage, shop, scent collection,
+    brand story, contact section, and footer.
 
-    Future implementations will include product pages,
-    scent collections, a shopping cart, and 3D animations.
+    Future implementations will include individual
+    product pages, a shopping cart, and checkout.
 */
 
-
-// Import the CSS file used to style the website
 import "./App.css";
 
-// Import the introductory loading screen component
+// Import the website components
 import LoadingScreen from "./components/LoadingScreen";
 import Hero from "./components/Hero";
+import Shop from "./components/Shop";
 
 
 /*
     App Component
 
-    This function represents the main Brielle website.
-
-    It organizes the website into sections that
-    customers can access using the navigation bar.
+    This function organizes the website into sections
+    that customers can access through the navigation bar.
 
     @returns JSX elements that React will render
 */
@@ -38,27 +37,26 @@ import Hero from "./components/Hero";
 function App() {
 
     return (
-
-        // Main container holding the website
         <div className="website">
 
-            {/* Displays the introductory loading screen */}
+            {/* Displays Brielle's introductory loading screen */}
             <LoadingScreen />
-
 
             {/*
                 Navigation Bar
 
-                Remains visible at the top of the screen.
+                Remains fixed at the top of the website.
 
-                Each link points to a section on the
-                homepage using its corresponding ID.
+                Each link connects to a section using
+                its corresponding ID.
             */}
 
             <nav className="navbar">
 
-                {/* Brielle logo */}
-                <h1 className="logo">BRIELLE</h1>
+                {/* Brielle logo links to the homepage */}
+                <a href="#home" className="logo">
+                    BRIELLE
+                </a>
 
                 {/* Navigation links */}
                 <div className="nav-links">
@@ -76,7 +74,11 @@ function App() {
                 </div>
 
                 {/* Shopping bag placeholder */}
-                <button className="cart-button" type="button">
+                <button
+                    className="cart-button"
+                    type="button"
+                    disabled
+                >
                     Bag (0)
                 </button>
 
@@ -86,46 +88,43 @@ function App() {
             {/*
                 Main Website Content
 
-                The main element contains the primary
-                sections of the Brielle website.
+                Contains all of Brielle's main sections.
             */}
 
             <main>
 
                 {/*
-                    Homepage Section
+                    Homepage
 
-                    This will eventually contain the
-                    cinematic 3D body crème experience.
+                    Displays the main Brielle introduction
+                    and featured product presentation.
                 */}
 
                 <Hero />
-                {/*
-                    Shop Section
 
-                    This section will eventually display
-                    Brielle's individual skincare products.
+
+                {/*
+                    Shop
+
+                    Displays Brielle's skincare collection
+                    with product descriptions and prices.
                 */}
 
-                <section id="shop" className="content-section">
-
-                    <h2>Our Collection</h2>
-
-                    <p>
-                        Discover skincare made with intention.
-                    </p>
-
-                </section>
+                <Shop />
 
 
                 {/*
                     Scents Section
 
-                    Customers will eventually explore
-                    the different fragrances available.
+                    Introduces Brielle's four fragrances.
+                    Each scent will eventually have its
+                    own product details and imagery.
                 */}
 
-                <section id="scents" className="content-section">
+                <section
+                    id="scents"
+                    className="content-section"
+                >
 
                     <h2>Explore Our Scents</h2>
 
@@ -137,13 +136,16 @@ function App() {
 
 
                 {/*
-                    About Section
+                    Our Story
 
-                    This section will introduce Brielle's
-                    story and the inspiration behind the brand.
+                    Introduces Brielle's brand identity
+                    and the inspiration behind the products.
                 */}
 
-                <section id="about" className="content-section">
+                <section
+                    id="about"
+                    className="content-section"
+                >
 
                     <h2>Our Story</h2>
 
@@ -158,14 +160,15 @@ function App() {
                 {/*
                     Contact Section
 
-                    Provides customers with a way to contact
-                    Brielle about products, orders, and questions.
-
-                    The email link opens the customer's
-                    default email application.
+                    Provides customers with a way to
+                    contact Brielle about products,
+                    orders, and general questions.
                 */}
 
-                <section id="contact" className="contact-section">
+                <section
+                    id="contact"
+                    className="contact-section"
+                >
 
                     <div className="contact-content">
 
@@ -182,7 +185,7 @@ function App() {
                         </p>
 
                         <a
-                            href="mailto:YOUR_EMAIL@example.com"
+                            href="mailto:briellebybri@gmail.com"
                             className="contact-button"
                         >
                             GET IN TOUCH →
@@ -208,14 +211,15 @@ function App() {
 
                 <p>Made with care in Brooklyn, NY.</p>
 
-                <p>© {new Date().getFullYear()} Brielle. All rights reserved.</p>
+                <p>
+                    © {new Date().getFullYear()} Brielle.
+                    All rights reserved.
+                </p>
 
             </footer>
 
         </div>
-
     );
-
 }
 
 

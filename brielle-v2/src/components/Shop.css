@@ -1,0 +1,111 @@
+
+/*
+    BRIELLE SKINCARE WEBSITE
+
+    File: Shop.css
+    Author: Brianna Graham
+
+    Description:
+    Styles Brielle's product collection with
+    minimal luxury colors and responsive cards.
+*/
+
+.shop-section {
+    padding: 120px 6%;
+    background: #F7F2EA;
+    color: #38251D;
+    text-align: center;
+    scroll-margin-top: 100px;
+}
+
+.shop-eyebrow {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #806757;
+}
+
+.shop-section h2 {
+    font-family: Georgia, serif;
+    font-size: clamp(42px, 6vw, 76px);
+    font-weight: 400;
+    margin: 15px 0;
+}
+
+.shop-intro {
+    color: #70584A;
+    margin-bottom: 50px;
+}
+
+.shop-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 25px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.product-card {
+    text-align: left;
+    min-width: 0;
+}
+
+.product-image {
+    aspect-ratio: 1 / 1.15;
+    background: #E9DDD0;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-card h3 {
+    font-family: Georgia, serif;
+    font-size: 24px;
+    font-weight: 400;
+    margin: 0 0 10px;
+}
+
+.product-description,
+.product-size {
+    color: #70584A;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.product-price {
+    font-size: 17px;
+    font-weight: 600;
+    margin: 12px 0;
+}
+
+.product-status {
+    display: inline-block;
+    border-bottom: 1px solid #38251D;
+    padding-bottom: 5px;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 900px) {
+    .shop-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 500px) {
+    .shop-section {
+        padding: 100px 5%;
+    }
+
+    .shop-grid {
+        gap: 20px 14px;
+    }
+
+    .product-card h3 {
+        font-size: 20px;
+    }
+}
