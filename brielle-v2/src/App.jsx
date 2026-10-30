@@ -10,12 +10,12 @@
     responsible for displaying the Brielle website.
 
     The App component connects the loading screen,
-    navigation bar, homepage, shop, scent collection,
-    brand story, contact section, and footer.
-
-    Future implementations will include individual
-    product pages, a shopping cart, and checkout.
+    navigation bar, homepage, product collection,
+    product details, scent collection, brand story,
+    contact section, and footer.
 */
+
+import { useState } from "react";
 
 import "./App.css";
 
@@ -23,42 +23,79 @@ import "./App.css";
 import LoadingScreen from "./components/LoadingScreen";
 import Hero from "./components/Hero";
 import Shop from "./components/Shop";
+import ProductDetails from "./components/ProductDetails";
+import Scents from "./components/Scents";
 
 
 /*
     App Component
 
-    This function organizes the website into sections
-    that customers can access through the navigation bar.
+    Organizes the website and manages which
+    product is currently selected.
 
     @returns JSX elements that React will render
 */
 
 function App() {
 
+    /*
+        Selected Product State
+
+        Stores the ID of the product currently
+        selected by the customer.
+
+        Body Crème is displayed by default.
+    */
+
+    const [selectedProductId, setSelectedProductId] =
+        useState("body-creme");
+
+
+    /*
+        Handle Product Selection
+
+        Called whenever a customer clicks
+        VIEW PRODUCT inside the Shop section.
+
+        Updates the selected product and scrolls
+        the customer to its details.
+    */
+
+    function handleSelectProduct(productId) {
+
+        // Update the currently selected product
+        setSelectedProductId(productId);
+
+        // Scroll to the product details section
+        document
+            .getElementById("product-details")
+            ?.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+    }
+
+
     return (
         <div className="website">
 
-            {/* Displays Brielle's introductory loading screen */}
+            {/* Introductory loading screen */}
             <LoadingScreen />
+
 
             {/*
                 Navigation Bar
 
-                Remains fixed at the top of the website.
-
-                Each link connects to a section using
-                its corresponding ID.
+                Provides links to the main
+                sections of the website.
             */}
 
             <nav className="navbar">
 
-                {/* Brielle logo links to the homepage */}
                 <a href="#home" className="logo">
                     BRIELLE
                 </a>
 
-                {/* Navigation links */}
                 <div className="nav-links">
 
                     <a href="#home">Home</a>
@@ -73,7 +110,7 @@ function App() {
 
                 </div>
 
-                {/* Shopping bag placeholder */}
+                {/* Shopping bag will be implemented later */}
                 <button
                     className="cart-button"
                     type="button"
@@ -87,59 +124,51 @@ function App() {
 
             {/*
                 Main Website Content
-
-                Contains all of Brielle's main sections.
             */}
 
             <main>
 
-                {/*
-                    Homepage
-
-                    Displays the main Brielle introduction
-                    and featured product presentation.
-                */}
-
+                {/* Homepage */}
                 <Hero />
 
 
                 {/*
-                    Shop
+                    Shop Section
 
-                    Displays Brielle's skincare collection
-                    with product descriptions and prices.
+                    Sends the selected product ID
+                    back to the App component.
                 */}
 
-                <Shop />
+                <Shop
+                    onSelectProduct={handleSelectProduct}
+                />
 
 
                 {/*
-                    Scents Section
+                    Product Details
 
-                    Introduces Brielle's four fragrances.
-                    Each scent will eventually have its
-                    own product details and imagery.
+                    Displays the product selected
+                    inside the Shop section.
+
+                    The key resets product selections
+                    when switching between products.
                 */}
 
-                <section
-                    id="scents"
-                    className="content-section"
-                >
+                <ProductDetails
+                    key={selectedProductId}
+                    productId={selectedProductId}
+                />
 
-                    <h2>Explore Our Scents</h2>
 
-                    <p>
-                        Find the fragrance that feels like you.
-                    </p>
-
-                </section>
+                {/* Signature fragrance collection */}
+                <Scents />
 
 
                 {/*
                     Our Story
 
-                    Introduces Brielle's brand identity
-                    and the inspiration behind the products.
+                    Introduces Brielle and its
+                    approach to body care.
                 */}
 
                 <section
@@ -160,9 +189,8 @@ function App() {
                 {/*
                     Contact Section
 
-                    Provides customers with a way to
-                    contact Brielle about products,
-                    orders, and general questions.
+                    Allows customers to contact
+                    Brielle through email.
                 */}
 
                 <section
@@ -201,8 +229,7 @@ function App() {
             {/*
                 Footer
 
-                Displays Brielle's brand information
-                at the bottom of the website.
+                Displays Brielle's brand information.
             */}
 
             <footer className="footer">
