@@ -1,0 +1,231 @@
+
+/*
+  BRIELLE SKINCARE WEBSITE
+
+  File: Hero.css
+  Author: Brianna Graham
+
+  Soft editorial homepage design.
+*/
+
+.brielle-hero {
+  background: #F6F1E8;
+  color: #303B30;
+  min-height: 80vh;
+  padding: 90px 7% 28px;
+  font-family: "Inter", Arial, sans-serif;
+}
+
+.brielle-hero * {
+  box-sizing: border-box;
+}
+
+.brielle-hero-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: center;
+  gap: clamp(40px, 7vw, 120px);
+  min-height: 610px;
+}
+
+.brielle-hero-content {
+  max-width: 690px;
+}
+
+.brielle-hero-eyebrow {
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: #697466;
+  margin: 0 0 32px;
+}
+
+.brielle-hero-title {
+  font-family: "Cormorant Infant", Georgia, serif;
+  font-size: clamp(60px, 6.8vw, 112px);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  line-height: 0.94;
+  color: #303B30;
+  margin: 0 0 35px;
+}
+
+.brielle-hero-title span {
+  font-style: italic;
+  color: #667260;
+}
+
+.brielle-hero-description {
+  max-width: 465px;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.95;
+  color: #595D54;
+  margin: 0 0 38px;
+}
+
+.brielle-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 26px;
+}
+
+.brielle-hero .brielle-hero-button,
+.brielle-hero .brielle-hero-button:visited {
+  display: inline-block;
+  background: #303B30;
+  color: #F6F1E8;
+  border: 1px solid #303B30;
+  padding: 18px 28px;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.13em;
+  text-decoration: none;
+  transition: background 0.25s, color 0.25s;
+}
+
+.brielle-hero .brielle-hero-button:hover {
+  background: transparent;
+  color: #303B30;
+}
+
+.brielle-hero .brielle-hero-story-link,
+.brielle-hero .brielle-hero-story-link:visited {
+  color: #303B30;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.13em;
+  text-decoration: none;
+  border-bottom: 1px solid #303B30;
+  padding-bottom: 5px;
+}
+
+.brielle-hero .brielle-hero-story-link:hover {
+  color: #667260;
+  border-color: #667260;
+}
+
+/* Editorial brand visual */
+
+.brielle-hero-art {
+  background: #E1DED4;
+  min-height: 570px;
+  padding: 24px;
+  display: flex;
+  align-items: stretch;
+}
+
+.brielle-hero-art-frame {
+  width: 100%;
+  min-height: 520px;
+  border: 1px solid rgba(48, 59, 48, 0.35);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.brielle-hero-art-monogram {
+  font-family: "Cormorant Infant", Georgia, serif;
+  font-size: clamp(170px, 21vw, 330px);
+  font-weight: 400;
+  line-height: 1;
+  color: #7E8B79;
+}
+
+.brielle-hero-art-caption {
+  position: absolute;
+  bottom: 35px;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: #566052;
+  text-align: center;
+}
+
+.brielle-hero-bottom {
+  max-width: 1440px;
+  margin: 65px auto 0;
+  padding-top: 20px;
+  border-top: 1px solid #D9D3C8;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  color: #74796F;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+}
+
+/* Tablet */
+
+@media (max-width: 1000px) {
+  .brielle-hero {
+    padding: 70px 5% 25px;
+  }
+
+  .brielle-hero-container {
+    gap: 35px;
+  }
+
+  .brielle-hero-art {
+    min-height: 450px;
+  }
+
+  .brielle-hero-art-frame {
+    min-height: 400px;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 760px) {
+  .brielle-hero {
+    padding: 75px 7% 25px;
+  }
+
+  .brielle-hero-container {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    min-height: auto;
+  }
+
+  .brielle-hero-title {
+    font-size: clamp(57px, 13vw, 80px);
+  }
+
+  .brielle-hero-description {
+    font-size: 14px;
+  }
+
+  .brielle-hero-art {
+    min-height: 390px;
+    padding: 16px;
+  }
+
+  .brielle-hero-art-frame {
+    min-height: 355px;
+  }
+
+  .brielle-hero-art-monogram {
+    font-size: 190px;
+  }
+
+  .brielle-hero-bottom {
+    margin-top: 40px;
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brielle-hero a {
+    transition: none;
+  }
+}

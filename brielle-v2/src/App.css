@@ -6,65 +6,166 @@
     Author: Brianna Graham
 
     Description:
-    This file contains the styling for the main
-    Brielle skincare website.
-
-    The website includes a fixed navigation bar,
-    cinematic homepage, product collections,
-    fragrance collections, brand story,
-    contact section, and footer.
+    Main website styling for Brielle Skin Ventures.
 
     Design:
-    Minimal luxury skincare aesthetic using
-    chocolate brown, ivory, and warm neutral colors.
+    Minimal luxury skincare aesthetic inspired
+    by soft ivory, muted olive, warm stone,
+    and espresso neutrals.
 
-    Future Implementations:
-    Interactive 3D product displays, scroll animations,
-    and individual product pages.
+    Typography:
+    Headings: Cormorant Infant
+    Body: Inter
 */
 
 
-/*
-    Main Website
+/* ==========================================
+   1. FONTS
+========================================== */
 
-    Sets the background color, text color,
-    and minimum height of the website.
-*/
+@import url(
+    "https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap"
+);
 
-.website {
-    min-height: 100vh;
-    background-color: #38251D;
-    color: #F7F2EA;
-    overflow-x: clip;
+
+/* ==========================================
+   2. BRAND COLOR PALETTE
+========================================== */
+
+:root {
+
+    --brielle-olive: #303B30;
+    --brielle-sage: #455144;
+    --brielle-soft-olive: #78846F;
+
+    --brielle-ivory: #F6F1E8;
+    --brielle-cream: #FFFCF7;
+    --brielle-stone: #D9D3C8;
+    --brielle-warm-stone: #E8E5DC;
+
+    --brielle-taupe: #B8AA97;
+    --brielle-espresso: #302C28;
+
+    --brielle-heading-font:
+        "Cormorant Infant", Georgia, serif;
+
+    --brielle-body-font:
+        "Inter", Arial, sans-serif;
+
 }
 
 
-/*
-    Navigation Bar
+/* ==========================================
+   3. GLOBAL WEBSITE STYLES
+========================================== */
 
-    Remains fixed at the top of the screen
-    while visitors scroll through the website.
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
 
-    z-index keeps the navigation above the
-    homepage and other content sections.
-*/
+html {
+    scroll-behavior: smooth;
+    background: var(--brielle-ivory);
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    background: var(--brielle-ivory);
+    color: var(--brielle-espresso);
+
+    font-family: var(--brielle-body-font);
+
+    -webkit-font-smoothing: antialiased;
+}
+
+#root {
+    min-height: 100vh;
+}
+
+.website {
+    min-height: 100vh;
+    overflow-x: clip;
+
+    background: var(--brielle-ivory);
+    color: var(--brielle-espresso);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--brielle-heading-font);
+    font-weight: 500;
+    letter-spacing: -0.025em;
+}
+
+p,
+label,
+input,
+textarea,
+select,
+button {
+    font-family: var(--brielle-body-font);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:disabled {
+    cursor: not-allowed;
+}
+
+
+/* ==========================================
+   4. NAVIGATION BAR
+========================================== */
+
+.site-header {
+    position: relative;
+    z-index: 1000;
+}
 
 .navbar {
     position: fixed;
+
     top: 0;
     left: 0;
 
     width: 100%;
-    z-index: 1000;
     min-height: 85px;
+
     padding: 20px 5%;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     gap: 20px;
 
-    background-color: rgba(56, 37, 29, 0.88);
+    background: rgba(246, 241, 232, 0.96);
+    color: var(--brielle-olive);
+
+    border-bottom: 1px solid var(--brielle-stone);
+
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
 
@@ -72,93 +173,116 @@
 }
 
 
-/*
-    Brielle Logo
+/* ==========================================
+   5. BRIELLE LOGO
+========================================== */
 
-    Displays the brand name on the left
-    side of the navigation bar.
-*/
+.logo,
+.navbar .nav-logo {
+    font-family: var(--brielle-heading-font);
 
-.logo {
-    font-family: Georgia, serif;
-    font-size: 28px;
-    font-weight: 400;
-    letter-spacing: 5px;
+    font-size: clamp(28px, 3vw, 39px);
+    font-weight: 500;
 
-    color: #F7F2EA;
+    letter-spacing: 0.13em;
+
+    color: var(--brielle-olive);
+
     text-decoration: none;
     white-space: nowrap;
 }
 
+.navbar .logo:visited,
+.navbar .nav-logo:visited {
+    color: var(--brielle-olive);
+}
 
-/*
-    Navigation Links
 
-    Flexbox arranges the links horizontally.
-*/
+/* ==========================================
+   6. NAVIGATION LINKS
+========================================== */
 
 .nav-links {
     display: flex;
+
     justify-content: center;
     align-items: center;
+
     flex-wrap: wrap;
     gap: 25px;
 }
 
-.nav-links a {
-    color: #F7F2EA;
-    font-family: Arial, sans-serif;
-    font-size: 13px;
-    font-weight: 400;
-
+.navbar a,
+.navbar a:visited,
+.nav-links a,
+.nav-links a:visited {
+    color: var(--brielle-olive);
     text-decoration: none;
-    transition: color 0.3s ease;
 }
 
-.nav-links a:hover {
-    color: #D5B89D;
+.nav-links a {
+    font-family: var(--brielle-body-font);
+
+    font-size: 12px;
+    font-weight: 500;
+
+    letter-spacing: 0.06em;
+
+    transition: color 0.25s ease;
+}
+
+.nav-links a:hover,
+.navbar a:hover {
+    color: var(--brielle-soft-olive);
 }
 
 
-/*
-    Shopping Bag Button
+/* ==========================================
+   7. SHOPPING BAG NAVIGATION
+========================================== */
 
-    Will eventually open Brielle's
-    interactive shopping cart.
-*/
-
-.cart-button {
+.cart-button,
+.nav-bag-link {
     padding: 11px 18px;
 
-    background-color: transparent;
-    color: #F7F2EA;
+    background: transparent;
+    color: var(--brielle-olive);
 
-    border: 1px solid #F7F2EA;
+    border: 1px solid var(--brielle-olive);
 
-    font-family: Arial, sans-serif;
-    font-size: 12px;
-    letter-spacing: 1px;
+    font-family: var(--brielle-body-font);
+
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
 
     white-space: nowrap;
-    cursor: pointer;
 
-    transition: background-color 0.3s ease,
-                color 0.3s ease;
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease;
 }
 
-.cart-button:hover {
-    background-color: #F7F2EA;
-    color: #38251D;
+.cart-button:hover,
+.nav-bag-link:hover {
+    background: var(--brielle-olive);
+    color: var(--brielle-ivory);
 }
 
+.navbar .nav-bag-link:hover {
+    color: var(--brielle-ivory);
+}
+
+
+/* ==========================================
+   8. HOMEPAGE HERO
+========================================== */
 
 /*
-    Homepage Hero
+   Keeps the opening light and subtle.
 
-    Creates a full-screen introduction to Brielle.
-
-    The chocolate background will eventually
-    feature an animated 3D body crème jar.
+   The newer Hero.css styles take care of
+   the detailed homepage hero layout.
 */
 
 .hero {
@@ -172,294 +296,710 @@
     justify-content: center;
     align-items: center;
 
-    background-color: #38251D;
-    color: #F7F2EA;
+    background: var(--brielle-ivory);
+    color: var(--brielle-olive);
 
     text-align: center;
     scroll-margin-top: 85px;
 }
 
-
-/*
-    Homepage Heading
-*/
-
 .hero h2 {
     margin: 0 0 25px;
 
-    font-family: Georgia, serif;
-    font-size: clamp(48px, 7vw, 100px);
+    font-family: var(--brielle-heading-font);
+
+    font-size: clamp(52px, 7vw, 100px);
     font-weight: 400;
-    line-height: 1.1;
-    letter-spacing: 1px;
+
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+
+    color: var(--brielle-olive);
 }
-
-
-/*
-    Homepage Description
-*/
 
 .hero p {
     max-width: 550px;
     margin: 0;
 
-    font-family: Arial, sans-serif;
-    font-size: 17px;
-    line-height: 1.8;
+    font-family: var(--brielle-body-font);
 
-    color: #E2D2C4;
+    font-size: 15px;
+    line-height: 1.9;
+
+    color: #62675F;
 }
-
-
-/*
-    Homepage Button
-
-    Allows visitors to explore the
-    Brielle product collection.
-*/
 
 .hero-button {
     display: inline-block;
 
     margin-top: 35px;
-    padding: 16px 30px;
+    padding: 17px 30px;
 
-    background-color: transparent;
-    border: 1px solid #F7F2EA;
+    background: var(--brielle-olive);
+    color: var(--brielle-ivory);
 
-    color: #F7F2EA;
+    border: 1px solid var(--brielle-olive);
+
+    font-family: var(--brielle-body-font);
+
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+
     text-decoration: none;
 
-    font-family: Arial, sans-serif;
-    font-size: 12px;
-    letter-spacing: 2px;
-
-    transition: background-color 0.3s ease,
-                color 0.3s ease;
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease;
 }
 
 .hero-button:hover {
-    background-color: #F7F2EA;
-    color: #38251D;
+    background: transparent;
+    color: var(--brielle-olive);
 }
 
 
-/*
-    General Content Sections
+/* ==========================================
+   9. HOMEPAGE ABOUT SECTION
+========================================== */
 
-    Used for the Shop, Explore Our Scents,
-    and Our Story sections.
+.home-about {
+    min-height: 60vh;
 
-    Each section has enough space to support
-    future product images and animations.
-*/
-
-.content-section {
-    min-height: 75vh;
-    padding: 130px 6% 90px;
-
-    background-color: #F7F2EA;
-    color: #38251D;
+    padding: 115px 7%;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
+    background: var(--brielle-warm-stone);
+    color: var(--brielle-espresso);
+
+    text-align: center;
+}
+
+.home-about h2 {
+    max-width: 850px;
+
+    font-family: var(--brielle-heading-font);
+
+    font-size: clamp(48px, 5vw, 76px);
+    font-weight: 400;
+
+    line-height: 1.05;
+
+    color: var(--brielle-olive);
+
+    margin: 0 0 25px;
+}
+
+.home-about p {
+    max-width: 600px;
+
+    font-family: var(--brielle-body-font);
+
+    font-size: 15px;
+    line-height: 1.95;
+
+    color: #62675F;
+}
+
+.home-about a {
+    display: inline-block;
+
+    margin-top: 30px;
+    padding-bottom: 6px;
+
+    border-bottom: 1px solid var(--brielle-olive);
+
+    color: var(--brielle-olive);
+
+    font-family: var(--brielle-body-font);
+
+    font-size: 11px;
+    font-weight: 500;
+
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+}
+
+.home-about a:hover {
+    color: var(--brielle-soft-olive);
+    border-color: var(--brielle-soft-olive);
+}
+
+
+/* ==========================================
+   10. HOMEPAGE CONTACT SECTION
+========================================== */
+
+.home-contact {
+    min-height: 55vh;
+
+    padding: 110px 7%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background: var(--brielle-ivory);
+    color: var(--brielle-espresso);
+
+    text-align: center;
+}
+
+.home-contact h2 {
+    font-family: var(--brielle-heading-font);
+
+    font-size: clamp(48px, 5vw, 76px);
+    font-weight: 400;
+
+    line-height: 1.05;
+
+    color: var(--brielle-olive);
+
+    margin: 0 0 25px;
+}
+
+.home-contact p {
+    max-width: 550px;
+
+    font-family: var(--brielle-body-font);
+
+    font-size: 15px;
+    line-height: 1.9;
+
+    color: #62675F;
+}
+
+.home-contact a {
+    display: inline-block;
+
+    margin-top: 30px;
+    padding-bottom: 6px;
+
+    border-bottom: 1px solid var(--brielle-olive);
+
+    color: var(--brielle-olive);
+
+    font-size: 11px;
+    font-weight: 500;
+
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+}
+
+
+/* ==========================================
+   11. SECTION EYEBROWS
+========================================== */
+
+.section-eyebrow,
+.page-eyebrow {
+    font-family: var(--brielle-body-font);
+
+    font-size: 11px;
+    font-weight: 500;
+
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+
+    color: #747D70;
+
+    margin-bottom: 25px;
+}
+
+
+/* ==========================================
+   12. GENERAL CONTENT SECTIONS
+========================================== */
+
+.content-section {
+    min-height: 75vh;
+
+    padding: 130px 6% 90px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background: var(--brielle-ivory);
+    color: var(--brielle-espresso);
+
     text-align: center;
     scroll-margin-top: 85px;
 }
 
-
-/*
-    Content Section Headings
-*/
-
 .content-section h2 {
-    margin: 0 0 25px;
+    font-family: var(--brielle-heading-font);
 
-    font-family: Georgia, serif;
-    font-size: clamp(42px, 6vw, 76px);
+    font-size: clamp(44px, 6vw, 78px);
     font-weight: 400;
-    line-height: 1.15;
+
+    line-height: 1.1;
+
+    color: var(--brielle-olive);
+
+    margin: 0 0 25px;
 }
-
-
-/*
-    Content Section Descriptions
-*/
 
 .content-section p {
     max-width: 600px;
-    margin: 0;
 
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    line-height: 1.8;
+    font-family: var(--brielle-body-font);
 
-    color: #70584A;
+    font-size: 15px;
+    line-height: 1.9;
+
+    color: #62675F;
 }
 
 
-/*
-    Contact Section
-
-    Creates an elegant contact area where
-    customers can reach Brielle.
-
-    Uses a slightly warmer background
-    to distinguish it from other sections.
-*/
+/* ==========================================
+   13. CONTACT SECTION
+========================================== */
 
 .contact-section {
     min-height: 70vh;
-    padding: 130px 6% 100px;
 
-    background-color: #EDE1D2;
-    color: #38251D;
+    padding: 130px 6% 100px;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
+    background: var(--brielle-stone);
+    color: var(--brielle-espresso);
+
     text-align: center;
     scroll-margin-top: 85px;
 }
-
-
-/*
-    Contact Content
-
-    Prevents the text from stretching
-    too far across the screen.
-*/
 
 .contact-content {
     width: 100%;
     max-width: 650px;
 }
 
-
-/*
-    Contact Subtitle
-*/
-
 .contact-subtitle {
-    margin: 0 0 25px;
+    font-family: var(--brielle-body-font);
 
-    font-family: Arial, sans-serif;
     font-size: 11px;
-    letter-spacing: 3px;
+    letter-spacing: 0.18em;
+
     line-height: 1.8;
 
-    color: #70584A;
+    color: #747D70;
+
+    margin: 0 0 25px;
 }
-
-
-/*
-    Contact Heading
-*/
 
 .contact-content h2 {
-    margin: 0 0 25px;
+    font-family: var(--brielle-heading-font);
 
-    font-family: Georgia, serif;
-    font-size: clamp(42px, 6vw, 76px);
+    font-size: clamp(44px, 6vw, 78px);
     font-weight: 400;
-    line-height: 1.15;
+
+    line-height: 1.1;
+
+    color: var(--brielle-olive);
+
+    margin: 0 0 25px;
 }
-
-
-/*
-    Contact Description
-*/
 
 .contact-description {
     max-width: 550px;
+
     margin: 0 auto 40px;
 
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    line-height: 1.9;
+    font-family: var(--brielle-body-font);
 
-    color: #70584A;
+    font-size: 15px;
+    line-height: 1.95;
+
+    color: #62675F;
 }
-
-
-/*
-    Contact Button
-
-    Opens the visitor's email application
-    using the mailto link in App.jsx.
-*/
 
 .contact-button {
     display: inline-block;
-    padding: 16px 35px;
 
-    background-color: transparent;
-    border: 1px solid #38251D;
+    padding: 17px 34px;
 
-    color: #38251D;
+    background: var(--brielle-olive);
+    color: var(--brielle-ivory);
+
+    border: 1px solid var(--brielle-olive);
+
+    font-family: var(--brielle-body-font);
+
+    font-size: 11px;
+    font-weight: 500;
+
+    letter-spacing: 0.13em;
     text-decoration: none;
 
-    font-family: Arial, sans-serif;
-    font-size: 12px;
-    letter-spacing: 2px;
-
-    transition: background-color 0.3s ease,
-                color 0.3s ease;
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease;
 }
 
 .contact-button:hover {
-    background-color: #38251D;
-    color: #F7F2EA;
+    background: transparent;
+    color: var(--brielle-olive);
+}
+
+.contact-email {
+    margin-top: 25px;
+
+    font-family: var(--brielle-body-font);
+    font-size: 13px;
+
+    color: #747D70;
 }
 
 
-/*
-    Footer
+/* ==========================================
+   14. SHOP AND PRODUCT PAGES
+========================================== */
 
-    Displays Brielle's brand information
-    at the bottom of the website.
+.shop-page,
+.shop-section,
+.products-section,
+.product-details,
+.product-details-page {
+    background: var(--brielle-ivory);
+    color: var(--brielle-espresso);
+}
+
+.shop-page h1,
+.shop-section h1,
+.shop-page h2,
+.product-details h1,
+.product-details-page h1 {
+    font-family: var(--brielle-heading-font);
+    font-weight: 400;
+
+    color: var(--brielle-olive);
+}
+
+.product-card h2,
+.product-card h3,
+.product-title {
+    font-family: var(--brielle-heading-font);
+    font-weight: 500;
+
+    color: var(--brielle-espresso);
+}
+
+.product-card,
+.product-info {
+    color: var(--brielle-espresso);
+}
+
+.product-card p,
+.product-description,
+.product-price {
+    font-family: var(--brielle-body-font);
+}
+
+.shop-page select,
+.product-details select,
+.product-details-page select {
+    background: var(--brielle-cream);
+    color: var(--brielle-espresso);
+
+    border: 1px solid var(--brielle-taupe);
+}
+
+
+/* ==========================================
+   15. SHOPPING BAG
+========================================== */
+
+.shopping-bag,
+.shopping-bag-page,
+.bag-page,
+.cart-page {
+    background: var(--brielle-ivory);
+    color: var(--brielle-espresso);
+}
+
+.shopping-bag h1,
+.shopping-bag-page h1,
+.bag-page h1,
+.cart-page h1 {
+    font-family: var(--brielle-heading-font);
+    font-weight: 400;
+
+    color: var(--brielle-olive);
+}
+
+.shopping-bag h2,
+.bag-page h2,
+.cart-page h2 {
+    font-family: var(--brielle-heading-font);
+    color: var(--brielle-olive);
+}
+
+.shopping-bag input,
+.shopping-bag-page input,
+.bag-page input,
+.cart-page input {
+    background: var(--brielle-cream);
+    color: var(--brielle-espresso);
+
+    border: 1px solid var(--brielle-taupe);
+}
+
+
+/* ==========================================
+   16. CONTACT FORM
+========================================== */
+
+.contact-page,
+.contact-form {
+    background: var(--brielle-ivory);
+    color: var(--brielle-espresso);
+}
+
+.contact-page h1,
+.contact-form h1 {
+    font-family: var(--brielle-heading-font);
+    font-weight: 400;
+
+    color: var(--brielle-olive);
+}
+
+.contact-page input,
+.contact-page textarea,
+.contact-form input,
+.contact-form textarea {
+    background: var(--brielle-cream);
+    color: var(--brielle-espresso);
+
+    border: 1px solid var(--brielle-taupe);
+    border-radius: 2px;
+
+    padding: 14px;
+}
+
+.contact-page input:focus,
+.contact-page textarea:focus,
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: 1px solid var(--brielle-olive);
+}
+
+
+/* ==========================================
+   17. STANDALONE PAGES
+========================================== */
+
+.standalone-page {
+    min-height: 75vh;
+
+    padding: 160px 6% 100px;
+
+    background: var(--brielle-ivory);
+    color: var(--brielle-espresso);
+}
+
+.standalone-page h1 {
+    font-family: var(--brielle-heading-font);
+
+    font-size: clamp(48px, 6vw, 78px);
+    font-weight: 400;
+
+    line-height: 1.05;
+
+    color: var(--brielle-olive);
+
+    margin: 20px 0 30px;
+}
+
+.story-content {
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+.story-content p {
+    font-family: var(--brielle-body-font);
+
+    font-size: 15px;
+    line-height: 2;
+
+    color: #62675F;
+
+    margin-bottom: 25px;
+}
+
+.page-action-link,
+.page-action-link:visited {
+    display: inline-block;
+
+    margin-top: 25px;
+    padding: 16px 26px;
+
+    background: var(--brielle-olive);
+    color: var(--brielle-ivory);
+
+    font-family: var(--brielle-body-font);
+
+    font-size: 11px;
+    font-weight: 500;
+
+    letter-spacing: 0.12em;
+    text-decoration: none;
+
+    border: 1px solid var(--brielle-olive);
+}
+
+.page-action-link:hover {
+    background: var(--brielle-sage);
+    color: var(--brielle-ivory);
+}
+
+
+/* ==========================================
+   18. FOOTER
+========================================== */
+
+/*
+   Matches the rest of the website,
+   without oversized text.
 */
 
-.footer {
-    padding: 45px 6%;
+.footer,
+.site-footer {
+    padding: 60px 6% 50px;
 
-    background-color: #38251D;
-    color: #F7F2EA;
+    background: var(--brielle-olive);
+    color: var(--brielle-ivory);
 
     text-align: center;
 }
 
-.footer p {
-    margin: 10px 0;
+.footer-content {
+    max-width: 1100px;
+    margin: 0 auto;
+}
 
-    font-family: Arial, sans-serif;
+/* BRIELLE footer logo */
+
+.footer-content > a,
+.footer .logo,
+.site-footer .logo {
+    display: inline-block;
+
+    font-family: var(--brielle-heading-font);
+
+    font-size: clamp(35px, 4vw, 48px);
+    font-weight: 400;
+
+    letter-spacing: 0.15em;
+
+    color: var(--brielle-ivory);
+
+    text-decoration: none;
+}
+
+/* Footer tagline and copyright */
+
+.footer p,
+.site-footer p,
+.footer-content p {
+    margin: 12px auto;
+
+    font-family: var(--brielle-body-font);
+
     font-size: 12px;
-    line-height: 1.8;
-    letter-spacing: 1px;
+    font-weight: 400;
+
+    line-height: 1.85;
+    letter-spacing: 0.015em;
+
+    color: var(--brielle-stone);
+}
+
+/* Footer navigation */
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-wrap: wrap;
+    gap: 28px;
+
+    margin: 30px auto;
+}
+
+.footer a,
+.footer a:visited,
+.site-footer a,
+.site-footer a:visited {
+    color: var(--brielle-ivory);
+    text-decoration: none;
+}
+
+.footer-links a {
+    font-family: var(--brielle-body-font);
+
+    font-size: 11px;
+    font-weight: 500;
+
+    letter-spacing: 0.08em;
+}
+
+.footer a:hover,
+.site-footer a:hover {
+    color: var(--brielle-taupe);
 }
 
 
-/*
-    Tablet Responsiveness
+/* ==========================================
+   19. SCROLL POSITION
+========================================== */
 
-    Adjusts the navigation layout
-    for smaller screens and iPads.
-*/
+#scents,
+#about,
+#contact {
+    scroll-margin-top: 110px;
+}
+
+
+/* ==========================================
+   20. ACCESSIBILITY
+========================================== */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: 2px solid var(--brielle-soft-olive);
+    outline-offset: 4px;
+}
+
+
+/* ==========================================
+   21. TABLET RESPONSIVENESS
+========================================== */
 
 @media (max-width: 1000px) {
 
     .navbar {
         flex-wrap: wrap;
         justify-content: center;
+
         padding: 18px 5%;
     }
 
     .nav-links {
         order: 3;
+
         width: 100%;
         gap: 18px;
     }
@@ -473,15 +1013,19 @@
         padding-top: 170px;
         scroll-margin-top: 140px;
     }
+
+    #scents,
+    #about,
+    #contact {
+        scroll-margin-top: 140px;
+    }
+
 }
 
 
-/*
-    Mobile Responsiveness
-
-    Adjusts spacing and typography
-    for smaller mobile screens.
-*/
+/* ==========================================
+   22. MOBILE RESPONSIVENESS
+========================================== */
 
 @media (max-width: 600px) {
 
@@ -490,9 +1034,10 @@
         padding: 15px 4%;
     }
 
-    .logo {
-        font-size: 23px;
-        letter-spacing: 4px;
+    .logo,
+    .navbar .nav-logo {
+        font-size: 28px;
+        letter-spacing: 0.12em;
     }
 
     .nav-links {
@@ -503,9 +1048,10 @@
         font-size: 11px;
     }
 
-    .cart-button {
+    .cart-button,
+    .nav-bag-link {
         padding: 9px 12px;
-        font-size: 11px;
+        font-size: 10px;
     }
 
     .hero {
@@ -513,11 +1059,11 @@
     }
 
     .hero h2 {
-        font-size: clamp(42px, 12vw, 65px);
+        font-size: clamp(46px, 12vw, 68px);
     }
 
     .hero p {
-        font-size: 15px;
+        font-size: 14px;
     }
 
     .content-section,
@@ -528,33 +1074,60 @@
 
     .content-section h2,
     .contact-content h2 {
-        font-size: clamp(38px, 10vw, 55px);
+        font-size: clamp(42px, 10vw, 60px);
     }
 
     .content-section p,
     .contact-description {
-        font-size: 15px;
+        font-size: 14px;
     }
 
-    .footer {
-        padding: 35px 7%;
+    .home-about,
+    .home-contact {
+        padding: 90px 7%;
     }
+
+    .standalone-page {
+        padding: 140px 7% 75px;
+    }
+
+    .story-content p {
+        font-size: 14px;
+    }
+
+    .footer,
+    .site-footer {
+        padding: 48px 7% 42px;
+    }
+
+    .footer-content > a {
+        font-size: 39px;
+    }
+
+    .footer-links {
+        gap: 16px 22px;
+    }
+
 }
 
 
-/*
-    Reduced Motion
-
-    Disables smooth transitions for visitors
-    who prefer reduced animation.
-*/
+/* ==========================================
+   23. REDUCED MOTION
+========================================== */
 
 @media (prefers-reduced-motion: reduce) {
 
+    html {
+        scroll-behavior: auto;
+    }
+
     .nav-links a,
     .cart-button,
+    .nav-bag-link,
     .hero-button,
-    .contact-button {
+    .contact-button,
+    .page-action-link {
         transition: none;
     }
+
 }

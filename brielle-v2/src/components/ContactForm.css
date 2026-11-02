@@ -1,0 +1,332 @@
+
+/*
+    BRIELLE SKINCARE WEBSITE
+
+    File: ContactForm.css
+    Author: Brianna Graham
+
+    Description:
+    Styles Brielle's customer contact page.
+
+    Features a minimal luxury design with
+    cream backgrounds, chocolate-brown accents,
+    elegant typography, and responsive layouts.
+
+    Includes styling for form inputs,
+    submission buttons, and feedback messages.
+*/
+
+
+/* Main contact page container */
+.brielle-contact {
+    min-height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 150px 6% 100px;
+
+    background-color: #F7F2EA;
+    color: #38251D;
+}
+
+
+/* Heading and introductory text */
+.brielle-contact-heading {
+    max-width: 650px;
+    margin: 0 auto 50px;
+    text-align: center;
+}
+
+.brielle-contact-heading .page-eyebrow {
+    color: #806757;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.brielle-contact-heading h1 {
+    margin: 18px 0 22px;
+
+    font-family: Georgia, serif;
+    font-size: clamp(44px, 6vw, 76px);
+    font-weight: 400;
+    line-height: 1.1;
+
+    color: #38251D;
+}
+
+.brielle-contact-heading > p:last-child {
+    max-width: 520px;
+    margin: 0 auto;
+
+    color: #70584A;
+    font-size: 15px;
+    line-height: 1.9;
+}
+
+
+/* Main customer inquiry form */
+.brielle-contact-form {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    max-width: 620px;
+    margin: 0 auto;
+    gap: 12px;
+}
+
+
+/* Labels above each input field */
+.brielle-contact-form label {
+    margin-top: 15px;
+
+    color: #38251D;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+
+/* Shared input, dropdown, and textarea styling */
+.brielle-contact-form input,
+.brielle-contact-form select,
+.brielle-contact-form textarea {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 17px 18px;
+
+    border: 1px solid #D5C5B6;
+    border-radius: 3px;
+
+    background-color: #FFFFFF;
+    color: #38251D;
+
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.5;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+/* Placeholder text */
+.brielle-contact-form input::placeholder,
+.brielle-contact-form textarea::placeholder {
+    color: #9B8B7E;
+}
+
+
+/* Highlight the selected field */
+.brielle-contact-form input:focus,
+.brielle-contact-form select:focus,
+.brielle-contact-form textarea:focus {
+    outline: none;
+
+    border-color: #806757;
+    box-shadow: 0 0 0 2px rgba(128, 103, 87, 0.15);
+}
+
+
+/* Fragrance or inquiry topic dropdown */
+.brielle-contact-form select {
+    cursor: pointer;
+}
+
+
+/* Customer message input */
+.brielle-contact-form textarea {
+    min-height: 165px;
+    resize: vertical;
+}
+
+
+/* Submit message button */
+.brielle-contact-form button[type="submit"] {
+    width: 100%;
+
+    margin-top: 25px;
+    padding: 19px 25px;
+
+    border: 1px solid #38251D;
+    border-radius: 3px;
+
+    background-color: #38251D;
+    color: #FFFFFF;
+
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+
+/* Button hover effect */
+.brielle-contact-form button[type="submit"]:hover:not(:disabled) {
+    background-color: #5B4031;
+    border-color: #5B4031;
+}
+
+
+/* Button keyboard focus */
+.brielle-contact-form button[type="submit"]:focus-visible {
+    outline: 2px solid #806757;
+    outline-offset: 4px;
+}
+
+
+/* Disabled button when message is sending */
+.brielle-contact-form button[type="submit"]:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+
+/* Successful message confirmation */
+.contact-feedback {
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 55px 30px;
+
+    background-color: #EDE3D7;
+    text-align: center;
+    border-radius: 3px;
+}
+
+.contact-feedback h2 {
+    margin-bottom: 18px;
+
+    font-family: Georgia, serif;
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 400;
+
+    color: #38251D;
+}
+
+.contact-feedback p {
+    color: #70584A;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+
+/* Send another message button */
+.contact-feedback button {
+    margin-top: 25px;
+    padding: 16px 24px;
+
+    background-color: #38251D;
+    color: #FFFFFF;
+
+    border: none;
+    border-radius: 3px;
+
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+}
+
+.contact-feedback button:hover {
+    background-color: #5B4031;
+}
+
+
+/* Submission error message */
+.contact-error {
+    margin-top: 15px;
+
+    color: #A13030;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.contact-error a {
+    color: inherit;
+    text-decoration: underline;
+}
+
+
+/* Direct business email beneath form */
+.contact-direct-email {
+    max-width: 620px;
+    margin: 40px auto 0;
+
+    color: #806757;
+    text-align: center;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.contact-direct-email a {
+    color: #38251D;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+
+/* Tablet responsiveness */
+@media (max-width: 900px) {
+    .brielle-contact {
+        padding: 130px 6% 80px;
+    }
+}
+
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+    .brielle-contact {
+        padding: 115px 5% 65px;
+    }
+
+    .brielle-contact-heading {
+        margin-bottom: 35px;
+    }
+
+    .brielle-contact-heading h1 {
+        font-size: 44px;
+    }
+
+    .brielle-contact-heading > p:last-child {
+        font-size: 14px;
+    }
+
+    .brielle-contact-form {
+        gap: 10px;
+    }
+
+    .brielle-contact-form input,
+    .brielle-contact-form select,
+    .brielle-contact-form textarea {
+        padding: 15px;
+        font-size: 16px;
+    }
+
+    .contact-feedback {
+        padding: 35px 20px;
+    }
+
+    .contact-direct-email {
+        font-size: 12px;
+    }
+}
+
+
+/* Reduce animations for users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+    .brielle-contact-form input,
+    .brielle-contact-form select,
+    .brielle-contact-form textarea,
+    .brielle-contact-form button {
+        transition: none;
+    }
+}

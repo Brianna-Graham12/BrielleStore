@@ -5,219 +5,366 @@
     File: App.jsx
     Author: Brianna Graham
 
-    This file contains the main React component
-    responsible for displaying the Brielle website.
+    Description:
+    Manages Brielle's website navigation,
+    homepage, product pages, shopping bag,
+    Our Story page, contact, and checkout.
 
-    The App component connects the loading screen,
-    navigation bar, homepage, and contact section.
-
-    Future implementations will include product pages,
-    scent collections, a shopping cart, and 3D animations.
+    Includes the homepage loading animation.
 */
 
+import { useEffect, useState } from "react";
 
-// Import the CSS file used to style the website
-import "./App.css";
+import {
+    Routes,
+    Route,
+    Link,
+    useLocation
+} from "react-router";
 
-// Import the introductory loading screen component
+import { useCart } from "./context/CartContext";
+
 import LoadingScreen from "./components/LoadingScreen";
 import Hero from "./components/Hero";
+import Scents from "./components/Scents";
+import Shop from "./components/Shop";
+import ProductDetails from "./components/ProductDetails";
+import ContactForm from "./components/ContactForm";
+import ShoppingBag from "./components/ShoppingBag";
+import OrderConfirmation from "./components/OrderConfirmation";
+import OurStory from "./components/OurStory";
+
+import "./App.css";
 
 
 /*
-    App Component
+    ScrollToTop
 
-    This function represents the main Brielle website.
+    Scrolls to the beginning of a new page,
+    or to a specific section when a link
+    contains a URL hash.
+*/
 
-    It organizes the website into sections that
-    customers can access using the navigation bar.
+function ScrollToTop() {
 
-    @returns JSX elements that React will render
+    const location = useLocation();
+
+    useEffect(() => {
+
+        if (location.hash) {
+
+            const sectionId = location.hash.slice(1);
+
+            const timeout = setTimeout(() => {
+
+                const section = document.getElementById(
+                    sectionId
+                );
+
+                if (section) {
+                    section.scrollIntoView({
+                        behavior: "smooth"
+                    });
+                }
+
+            }, 100);
+
+            return () => clearTimeout(timeout);
+        }
+
+        window.scrollTo({
+            top: 0,
+            behavior: "instant"
+        });
+
+    }, [location.pathname, location.hash]);
+
+    return null;
+}
+
+
+/*
+    HomePage
+
+    Displays the homepage and introduces
+    Brielle's products and story.
+*/
+
+function HomePage() {
+
+    return (
+        <main>
+
+            <Hero />
+
+            <section id="scents">
+                <Scents />
+            </section>
+
+            <section id="about" className="home-about">
+
+                <p className="section-eyebrow">
+                    THE BRIELLE STORY
+                </p>
+
+                <h2>
+                    Skincare Made for Your Everyday Ritual
+                </h2>
+
+                <p>
+                    Brielle creates thoughtfully crafted
+                    body care designed to leave your skin
+                    feeling soft, nourished, and
+                    beautifully moisturized.
+                </p>
+
+                <Link to="/our-story">
+                    DISCOVER OUR STORY
+                </Link>
+
+            </section>
+
+            <section id="contact" className="home-contact">
+
+                <h2>Let's Stay Connected</h2>
+
+                <p>
+                    Have a question about our products?
+                    We'd love to hear from you.
+                </p>
+
+                <Link to="/contact">
+                    GET IN TOUCH
+                </Link>
+
+            </section>
+
+        </main>
+    );
+}
+
+
+/*
+    App
+
+    Displays the site navigation,
+    routes, and footer.
+
+    Uses CartContext for the bag count.
 */
 
 function App() {
 
+    const location = useLocation();
+
+    const { cartCount } = useCart();
+
+    // Only show loading once per browser session
+    const [showLoading, setShowLoading] = useState(
+        () =>
+            window.sessionStorage.getItem(
+                "brielle-loading-seen"
+            ) !== "true"
+    );
+
+    function finishLoading() {
+
+        window.sessionStorage.setItem(
+            "brielle-loading-seen",
+            "true"
+        );
+
+        setShowLoading(false);
+    }
+
+    const isHomePage = location.pathname === "/";
+
     return (
+        <>
 
-        // Main container holding the website
-        <div className="website">
+            <ScrollToTop />
 
-            {/* Displays the introductory loading screen */}
-            <LoadingScreen />
+            {/* Homepage loading animation */}
+            {isHomePage && showLoading && (
 
+                <LoadingScreen
+                    onComplete={finishLoading}
+                />
 
-            {/*
-                Navigation Bar
-
-                Remains visible at the top of the screen.
-
-                Each link points to a section on the
-                homepage using its corresponding ID.
-            */}
-
-            <nav className="navbar">
-
-                {/* Brielle logo */}
-                <h1 className="logo">BRIELLE</h1>
-
-                {/* Navigation links */}
-                <div className="nav-links">
-
-                    <a href="#home">Home</a>
-
-                    <a href="#shop">Shop</a>
-
-                    <a href="#scents">Explore Our Scents</a>
-
-                    <a href="#about">Our Story</a>
-
-                    <a href="#contact">Contact</a>
-
-                </div>
-
-                {/* Shopping bag placeholder */}
-                <button className="cart-button" type="button">
-                    Bag (0)
-                </button>
-
-            </nav>
+            )}
 
 
-            {/*
-                Main Website Content
+            {/* Main website navigation */}
+            <header className="site-header">
 
-                The main element contains the primary
-                sections of the Brielle website.
-            */}
+                <nav className="navbar">
 
-            <main>
+                    <Link
+                        to="/"
+                        className="nav-logo"
+                        aria-label="Brielle homepage"
+                    >
+                        BRIELLE
+                    </Link>
 
-                {/*
-                    Homepage Section
+                    <div className="nav-links">
 
-                    This will eventually contain the
-                    cinematic 3D body crème experience.
-                */}
+                        <Link to="/">
+                            Home
+                        </Link>
 
-                <Hero />
-                {/*
-                    Shop Section
+                        <Link to="/shop">
+                            Shop
+                        </Link>
 
-                    This section will eventually display
-                    Brielle's individual skincare products.
-                */}
+                        <Link to="/#scents">
+                            Explore Our Scents
+                        </Link>
 
-                <section id="shop" className="content-section">
+                        <Link to="/our-story">
+                            Our Story
+                        </Link>
 
-                    <h2>Our Collection</h2>
+                        <Link to="/contact">
+                            Contact
+                        </Link>
 
-                    <p>
-                        Discover skincare made with intention.
-                    </p>
-
-                </section>
-
-
-                {/*
-                    Scents Section
-
-                    Customers will eventually explore
-                    the different fragrances available.
-                */}
-
-                <section id="scents" className="content-section">
-
-                    <h2>Explore Our Scents</h2>
-
-                    <p>
-                        Find the fragrance that feels like you.
-                    </p>
-
-                </section>
-
-
-                {/*
-                    About Section
-
-                    This section will introduce Brielle's
-                    story and the inspiration behind the brand.
-                */}
-
-                <section id="about" className="content-section">
-
-                    <h2>Our Story</h2>
-
-                    <p>
-                        Thoughtfully crafted body care,
-                        made in Brooklyn.
-                    </p>
-
-                </section>
-
-
-                {/*
-                    Contact Section
-
-                    Provides customers with a way to contact
-                    Brielle about products, orders, and questions.
-
-                    The email link opens the customer's
-                    default email application.
-                */}
-
-                <section id="contact" className="contact-section">
-
-                    <div className="contact-content">
-
-                        <p className="contact-subtitle">
-                            WE WOULD LOVE TO HEAR FROM YOU
-                        </p>
-
-                        <h2>Let's Connect.</h2>
-
-                        <p className="contact-description">
-                            Have a question about your order,
-                            our products, or finding your
-                            perfect scent? We're here to help.
-                        </p>
-
-                        <a
-                            href="mailto:YOUR_EMAIL@example.com"
-                            className="contact-button"
+                        <Link
+                            to="/bag"
+                            className="nav-bag-link"
+                            aria-label={
+                                `Shopping bag with ${cartCount} items`
+                            }
                         >
-                            GET IN TOUCH →
-                        </a>
+                            BAG ({cartCount})
+                        </Link>
 
                     </div>
 
-                </section>
+                </nav>
 
-            </main>
+            </header>
 
 
-            {/*
-                Footer
+            {/* Website routes */}
+            <Routes>
 
-                Displays Brielle's brand information
-                at the bottom of the website.
-            */}
+                <Route
+                    path="/"
+                    element={<HomePage />}
+                />
 
-            <footer className="footer">
+                <Route
+                    path="/shop"
+                    element={<Shop />}
+                />
 
-                <p>BRIELLE</p>
+                <Route
+                    path="/shop/:productId"
+                    element={<ProductDetails />}
+                />
 
-                <p>Made with care in Brooklyn, NY.</p>
+                <Route
+                    path="/bag"
+                    element={<ShoppingBag />}
+                />
 
-                <p>© {new Date().getFullYear()} Brielle. All rights reserved.</p>
+                {/*
+                    Dedicated editorial Our Story page
+                    using Cormorant Infant and Inter.
+                */}
+
+                <Route
+                    path="/our-story"
+                    element={<OurStory />}
+                />
+
+                <Route
+                    path="/contact"
+                    element={
+                        <main className="contact-page">
+                            <ContactForm />
+                        </main>
+                    }
+                />
+
+                <Route
+                    path="/checkout/success"
+                    element={<OrderConfirmation />}
+                />
+
+                <Route
+                    path="*"
+                    element={
+                        <main className="story-page">
+
+                            <section className="story-content">
+
+                                <h1>Page Not Found</h1>
+
+                                <p>
+                                    The page you're looking
+                                    for doesn't exist.
+                                </p>
+
+                                <Link to="/">
+                                    RETURN HOME
+                                </Link>
+
+                            </section>
+
+                        </main>
+                    }
+                />
+
+            </Routes>
+
+
+            {/* Website footer */}
+            <footer className="site-footer">
+
+                <div className="footer-content">
+
+                    <Link to="/">
+                        BRIELLE
+                    </Link>
+
+                    <p>
+                        Thoughtfully crafted body care
+                        for your everyday ritual.
+                    </p>
+
+                    <div className="footer-links">
+
+                        <Link to="/shop">
+                            Shop
+                        </Link>
+
+                        <Link to="/our-story">
+                            Our Story
+                        </Link>
+
+                        <Link to="/contact">
+                            Contact
+                        </Link>
+
+                        <Link to="/bag">
+                            Shopping Bag
+                        </Link>
+
+                    </div>
+
+                    <p>
+                        © {new Date().getFullYear()}
+                        {" "}Brielle Skin Ventures LLC.
+                    </p>
+
+                </div>
 
             </footer>
 
-        </div>
-
+        </>
     );
-
 }
 
-
-// Allows main.jsx to import the App component
 export default App;

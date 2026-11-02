@@ -1,0 +1,176 @@
+
+/*
+    BRIELLE SKINCARE WEBSITE
+
+    File: Scents.css
+    Author: Brianna Graham
+
+    Description:
+    Styles Brielle's four signature fragrance cards.
+
+    Each fragrance has a distinct background
+    while maintaining the luxury brand aesthetic.
+*/
+
+
+/* Main fragrance collection */
+.scents-section {
+    padding: 120px 6%;
+    background-color: #F7F2EA;
+    color: #38251D;
+    text-align: center;
+    scroll-margin-top: 110px;
+}
+
+
+/* Small heading above the collection */
+.scents-eyebrow {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #806757;
+}
+
+
+/* Main section heading */
+.scents-section h2 {
+    margin: 15px 0;
+    font-family: Georgia, serif;
+    font-size: clamp(42px, 6vw, 76px);
+    font-weight: 400;
+}
+
+
+/* Introductory description */
+.scents-intro {
+    margin-bottom: 50px;
+    color: #70584A;
+    line-height: 1.7;
+}
+
+
+/* Responsive fragrance grid */
+.scents-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+/* Shared styling for each fragrance */
+.scent-card {
+    position: relative;
+    min-height: 370px;
+    padding: 35px;
+
+    display: flex;
+    align-items: flex-end;
+
+    text-align: left;
+    overflow: hidden;
+    border-radius: 3px;
+
+    transition: transform 0.3s ease;
+}
+
+.scent-card:hover {
+    transform: translateY(-5px);
+}
+
+
+/* Keeps text readable within each card */
+.scent-card-content {
+    position: relative;
+    z-index: 1;
+    max-width: 360px;
+}
+
+
+/* Fragrance note styling */
+.scent-notes {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+
+/* Fragrance name */
+.scent-card h3 {
+    margin: 12px 0;
+    font-family: Georgia, serif;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 400;
+}
+
+
+/* Fragrance description */
+.scent-description {
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+
+/* Golden Vanilla color palette */
+.golden-vanilla {
+    background: linear-gradient(
+        135deg, #EAD3A7, #C99B60
+    );
+    color: #4C321E;
+}
+
+
+/* Lavender Fields color palette */
+.lavender-fields {
+    background: linear-gradient(
+        135deg, #DFD6E9, #B5A2CB
+    );
+    color: #3F314A;
+}
+
+
+/* Midnight Ember color palette */
+.midnight-ember {
+    background: linear-gradient(
+        135deg, #594039, #241A1B
+    );
+    color: #F7F2EA;
+}
+
+
+/* Soft Bloom color palette */
+.soft-bloom {
+    background: linear-gradient(
+        135deg, #F4DDD9, #D6A7A2
+    );
+    color: #563634;
+}
+
+
+/* Mobile layouts */
+@media (max-width: 650px) {
+
+    .scents-section {
+        padding: 100px 5%;
+    }
+
+    .scents-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .scent-card {
+        min-height: 300px;
+        padding: 28px;
+    }
+
+}
+
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+
+    .scent-card {
+        transition: none;
+    }
+
+}

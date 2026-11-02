@@ -1,0 +1,269 @@
+
+/*
+    BRIELLE SKINCARE WEBSITE
+
+    File: ShoppingBag.css
+    Author: Brianna Graham
+
+    Description:
+    Minimal luxury styling for Brielle's
+    shopping bag and order summary.
+*/
+
+.bag-page {
+    min-height: 75vh;
+    background: #faf7f2;
+    color: #30241e;
+    padding: 110px 24px 90px;
+}
+
+.bag-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.bag-eyebrow {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #856d5e;
+}
+
+.bag-container > h1 {
+    font-family: Georgia, serif;
+    font-weight: 400;
+    font-size: clamp(38px, 5vw, 62px);
+    margin: 12px 0;
+}
+
+.bag-intro {
+    color: #75665d;
+    margin-bottom: 50px;
+}
+
+.bag-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 340px;
+    gap: 65px;
+    align-items: start;
+}
+
+.bag-item {
+    display: flex;
+    gap: 25px;
+    padding: 25px 0;
+    border-bottom: 1px solid #ddd4c9;
+}
+
+.bag-product-image {
+    width: 135px;
+    height: 155px;
+    flex-shrink: 0;
+    background: #e7d9c7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Georgia, serif;
+    font-size: 17px;
+    letter-spacing: 3px;
+    color: #55392d;
+}
+
+.bag-product-information {
+    flex: 1;
+    min-width: 0;
+}
+
+.bag-product-information h2 {
+    font-family: Georgia, serif;
+    font-size: 23px;
+    font-weight: 400;
+    margin: 0 0 10px;
+}
+
+.bag-product-information p {
+    margin: 4px 0;
+    color: #75665d;
+    font-size: 14px;
+}
+
+.bag-product-information strong {
+    display: block;
+    margin-top: 12px;
+    font-weight: 500;
+}
+
+.bag-item-actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-top: 17px;
+}
+
+.bag-quantity {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid #cbbfb3;
+}
+
+.bag-quantity button {
+    padding: 10px 13px;
+    border: none;
+    background: transparent;
+    color: #30241e;
+    cursor: pointer;
+}
+
+.bag-quantity button:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.bag-quantity span {
+    min-width: 25px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.bag-remove {
+    background: transparent;
+    border: none;
+    padding: 5px 0;
+    color: #75665d;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.bag-continue {
+    display: inline-block;
+    margin-top: 25px;
+    color: #493328;
+    text-decoration: underline;
+}
+
+.bag-summary {
+    background: #f0e8dc;
+    padding: 32px;
+}
+
+.bag-summary h2 {
+    font-family: Georgia, serif;
+    font-size: 26px;
+    font-weight: 400;
+    margin: 0 0 25px;
+}
+
+.bag-summary-line {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 12px 0;
+}
+
+.bag-total {
+    border-top: 1px solid #cbbfb3;
+    margin-top: 15px;
+    padding-top: 20px;
+    font-size: 18px;
+}
+
+.bag-shipping-note,
+.bag-secure-note {
+    color: #75665d;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.bag-checkout-button {
+    display: block;
+    width: 100%;
+    padding: 17px 18px;
+    margin-top: 24px;
+    border: 1px solid #3b261e;
+    background: #3b261e;
+    color: #fffaf5;
+    text-decoration: none;
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.bag-checkout-button:hover {
+    background: #583a2c;
+}
+
+.bag-checkout-button:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+.bag-error {
+    color: #9e3028;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.bag-secure-note {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.bag-empty {
+    text-align: center;
+    padding: 75px 20px;
+    border-top: 1px solid #ddd4c9;
+}
+
+.bag-empty h2 {
+    font-family: Georgia, serif;
+    font-size: 30px;
+    font-weight: 400;
+}
+
+.bag-empty p {
+    color: #75665d;
+}
+
+.bag-empty .bag-checkout-button {
+    max-width: 320px;
+    margin: 30px auto 0;
+}
+
+@media (max-width: 800px) {
+
+    .bag-layout {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .bag-page {
+        padding: 90px 18px 60px;
+    }
+
+    .bag-summary {
+        padding: 25px;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .bag-product-image {
+        width: 100px;
+        height: 125px;
+        font-size: 12px;
+    }
+
+    .bag-item {
+        gap: 15px;
+    }
+
+    .bag-product-information h2 {
+        font-size: 20px;
+    }
+
+}
