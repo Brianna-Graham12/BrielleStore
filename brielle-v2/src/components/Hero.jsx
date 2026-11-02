@@ -1,80 +1,81 @@
 
 /*
-    BRIELLE SKINCARE WEBSITE
+  BRIELLE SKINCARE WEBSITE
 
-    File: Hero.jsx
-    Author: Brianna Graham
+  File: Hero.jsx
+  Author: Brianna Graham
 
-    Description:
-    Displays the cinematic homepage introduction
-    featuring Brielle's signature Body Crème.
-
-    The hero section introduces the brand and
-    provides a link to the product collection.
-
-    Future Implementation:
-    Add a 3D product model and scroll animations.
+  Homepage hero section.
 */
 
-
-/*
-    Hero Component
-
-    Displays the main heading, brand description,
-    and featured product area.
-
-    @returns JSX elements for the homepage hero
-*/
+import { Link } from "react-router";
+import "./Hero.css";
 
 function Hero() {
+  return (
+    <section className="brielle-hero">
+      <div className="brielle-hero-container">
 
-    return (
+        <div className="brielle-hero-content">
 
-        <section id="home" className="hero">
+          <p className="brielle-hero-eyebrow">
+            THOUGHTFULLY CRAFTED BODY CARE
+          </p>
 
-            {/* Small introductory text */}
-            <p className="hero-eyebrow">
-                THE ART OF BODY CARE
-            </p>
+          <h1 className="brielle-hero-title">
+            The beauty of
+            <span> feeling good </span>
+            in your skin.
+          </h1>
 
-            {/* Main brand heading */}
-            <h1 className="hero-title">
-                Beyond the Surface
-            </h1>
+          <p className="brielle-hero-description">
+            Discover body crèmes, lotions, and hand
+            creams made to turn everyday skincare
+            into a moment of comfort and indulgence.
+          </p>
 
-            {/* Description of the Brielle experience */}
-            <p className="hero-description">
-                Discover a world of indulgent skincare,
-                thoughtfully crafted for your daily ritual.
-            </p>
+          <div className="brielle-hero-actions">
 
-            {/* Featured product display */}
-            <div className="hero-product">
+            <Link
+              to="/shop"
+              className="brielle-hero-button"
+            >
+              SHOP THE COLLECTION
+            </Link>
 
-                <img
-                    src="/images/brielle-creme.png"
-                    alt="Brielle Body Crème in an amber-brown jar"
-                    className="hero-product-image"
-                />
+            <Link
+              to="/our-story"
+              className="brielle-hero-story-link"
+            >
+              OUR STORY
+            </Link>
 
-            </div>
+          </div>
 
-            {/* Link to the product collection */}
-            <a href="#shop" className="hero-button">
-                EXPLORE THE COLLECTION →
-            </a>
+        </div>
 
-            {/* Encourages visitors to scroll */}
-            <p className="hero-scroll">
-                SCROLL TO EXPLORE ↓
-            </p>
+        <div className="brielle-hero-art" aria-hidden="true">
+          <div className="brielle-hero-art-frame">
 
-        </section>
+            <span className="brielle-hero-art-monogram">
+              B
+            </span>
 
-    );
+            <span className="brielle-hero-art-caption">
+              THE ART OF EVERYDAY CARE
+            </span>
 
+          </div>
+        </div>
+
+      </div>
+
+      <div className="brielle-hero-bottom">
+        <span>BRIELLE SKIN VENTURES</span>
+        <span>CREATED WITH INTENTION</span>
+      </div>
+    </section>
+  );
 }
 
-
-// Allows App.jsx to import the hero component
 export default Hero;

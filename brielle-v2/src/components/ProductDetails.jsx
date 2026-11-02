@@ -6,36 +6,41 @@
     Author: Brianna Graham
 
     Description:
-    Displays interactive product details for
-    every product in Brielle's collection.
+    Displays Brielle's individual product pages.
 
-    Customers can select available fragrances,
-    view product sizes, adjust quantities,
-    and see updated prices.
+    Allows customers to select a fragrance,
+    size, and quantity before adding an item
+    to their shopping bag.
 
-    Future Implementation:
-    Connect selected products to the shopping bag.
+    The shopping bag manages Stripe Checkout.
 */
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+import {
+    Link,
+    useNavigate,
+    useParams
+} from "react-router";
+
 import { products } from "../data/products";
+import { useCart } from "../context/CartContext";
+
 import "./ProductDetails.css";
 
 
-/*
-    ProductDetails Component
+function ProductDetails() {
 
-    Receives the selected product ID from App.jsx.
+    // Get the product ID from the URL
+    const { productId } = useParams();
 
-    React state tracks the customer's selected
-    fragrance, size, and quantity.
+    // Navigate between website pages
+    const navigate = useNavigate();
 
-    @returns JSX elements for the product details
-*/
+    // Access Brielle's shared shopping bag
+    const { addToCart } = useCart();
 
-function ProductDetails({ productId = "body-creme" }) {
-
-    // Find the product selected from the Shop section
+    // Find the selected product
     const product = products.find(
         (item) => item.id === productId
     );
@@ -45,87 +50,172 @@ function ProductDetails({ productId = "body-creme" }) {
         product?.scents?.[0] ?? ""
     );
 
-    // Track the selected size
+    // Track the selected product size
     const [selectedSize, setSelectedSize] = useState(0);
 
-    // Track the quantity selected
+    // Track the quantity
     const [quantity, setQuantity] = useState(1);
 
-    // Avoid displaying a broken page for an invalid product ID
+
+    /*
+        Reset customer selections when they
+        navigate to a different product.
+    */
+
+    useEffect(() => {
+
+        setSelectedScent(
+            product?.scents?.[0] ?? ""
+        );
+
+        setSelectedSize(0);
+
+        setQuantity(1);
+
+    }, [productId, product]);
+
+
+    // Display a message if the product doesn't exist
     if (!product) {
+
         return (
-            <section id="product-details" className="product-details">
-                <p>Product not found.</p>
+            <section className="product-details">
+
+                <div className="details-content">
+
+                    <h2>Product Not Found</h2>
+
+                    <p>
+                        We couldn't find that Brielle product.
+                    </p>
+
+                    <Link
+                        to="/shop"
+                        className="details-back"
+                    >
+                        Return to Shop
+                    </Link>
+
+                </div>
+
             </section>
         );
     }
 
-    // Determine whether the product is the four-tin sampler
+
+    // The sampler includes all four fragrances
     const isSampler = product.id === "sampler";
 
-    // Get the selected product size
-    const size = product.sizes[selectedSize] ?? product.sizes[0];
+    // Find the selected product size
+    const size =
+        product.sizes[selectedSize] ??
+        product.sizes[0];
 
-    // Calculate the total before tax and shipping
+    // Calculate the displayed total
     const total = size.price * quantity;
 
 
     /*
         Decrease Quantity
 
-        Prevents customers from selecting
-        fewer than one item.
+        Customers must select at least one item.
     */
 
     function decreaseQuantity() {
-        setQuantity((current) => Math.max(1, current - 1));
+
+        setQuantity((current) =>
+            Math.max(1, current - 1)
+        );
+
     }
 
 
     /*
         Increase Quantity
 
-        Adds one to the selected quantity.
+        Maximum of 10 per product selection.
     */
 
     function increaseQuantity() {
-        setQuantity((current) => current + 1);
+
+        setQuantity((current) =>
+            Math.min(10, current + 1)
+        );
+
+    }
+
+
+    /*
+        Add To Bag
+
+        Saves the customer's selected product
+        in the shared CartContext.
+
+        Navigates to the shopping bag page
+        without opening Stripe immediately.
+    */
+
+    function handleAddToBag() {
+
+        addToCart(
+            product,
+            isSampler ? null : selectedScent,
+            size,
+            quantity
+        );
+
+        navigate("/bag");
+
     }
 
 
     return (
-        <section
-            id="product-details"
-            className="product-details"
-        >
 
-            {/* Left side: Product presentation */}
+        <section className="product-details">
+
+            {/* Product presentation */}
             <div className="details-image">
 
                 <div className="details-image-placeholder">
 
                     <span>BRIELLE</span>
 
-                    <p>{product.name.toUpperCase()}</p>
+                    <p>
+                        {product.name.toUpperCase()}
+                    </p>
 
                 </div>
 
             </div>
 
 
-            {/* Right side: Product information */}
+            {/* Product information and selections */}
             <div className="details-content">
+
+                <Link
+                    to="/shop"
+                    className="details-back"
+                >
+                    ← Back to Collection
+                </Link>
+
 
                 <p className="details-eyebrow">
                     THE BRIELLE COLLECTION
                 </p>
 
+
+                {/* Product name */}
                 <h2>{product.name}</h2>
 
+
+                {/* Product total */}
                 <p className="details-price">
                     ${total.toFixed(2)}
                 </p>
 
+
+                {/* Product description */}
                 <p className="details-description">
                     {product.description}
                 </p>
@@ -134,13 +224,15 @@ function ProductDetails({ productId = "body-creme" }) {
                 {/*
                     Fragrance Selection
 
-                    Individual products have a scent selector.
+                    Individual body care products have
+                    fragrance options.
 
-                    The four-tin sampler includes all four
-                    fragrances, so it doesn't need a dropdown.
+                    The four-tin sampler includes
+                    all fragrances automatically.
                 */}
 
                 {!isSampler && (
+
                     <div className="details-option">
 
                         <label htmlFor="product-scent">
@@ -151,7 +243,9 @@ function ProductDetails({ productId = "body-creme" }) {
                             id="product-scent"
                             value={selectedScent}
                             onChange={(event) =>
-                                setSelectedScent(event.target.value)
+                                setSelectedScent(
+                                    event.target.value
+                                )
                             }
                         >
 
@@ -169,11 +263,13 @@ function ProductDetails({ productId = "body-creme" }) {
                         </select>
 
                     </div>
+
                 )}
 
 
-                {/* Display the included sampler fragrances */}
+                {/* Four-Tin Sampler fragrances */}
                 {isSampler && (
+
                     <div className="details-option">
 
                         <p>Included Fragrances</p>
@@ -184,41 +280,46 @@ function ProductDetails({ productId = "body-creme" }) {
                         </p>
 
                     </div>
+
                 )}
 
 
                 {/*
-                    Size Selection
+                    Product Size Selection
 
-                    Displays only the sizes currently
-                    available for the selected product.
+                    Sizes and prices are read from
+                    the existing products.js file.
                 */}
 
                 <div className="details-option">
 
-                    <p>Select Your Size</p>
+                    <p>Size</p>
 
                     <div className="size-options">
 
-                        {product.sizes.map((option, index) => (
+                        {product.sizes.map(
+                            (option, index) => (
 
-                            <button
-                                key={option.label}
-                                type="button"
-                                className={
-                                    selectedSize === index
-                                        ? "size-button selected"
-                                        : "size-button"
-                                }
-                                aria-pressed={selectedSize === index}
-                                onClick={() =>
-                                    setSelectedSize(index)
-                                }
-                            >
-                                {option.label}
-                            </button>
+                                <button
+                                    key={option.label}
+                                    type="button"
+                                    className={
+                                        selectedSize === index
+                                            ? "size-button selected"
+                                            : "size-button"
+                                    }
+                                    aria-pressed={
+                                        selectedSize === index
+                                    }
+                                    onClick={() =>
+                                        setSelectedSize(index)
+                                    }
+                                >
+                                    {option.label}
+                                </button>
 
-                        ))}
+                            )
+                        )}
 
                     </div>
 
@@ -232,6 +333,7 @@ function ProductDetails({ productId = "body-creme" }) {
 
                     <div className="quantity-selector">
 
+                        {/* Decrease quantity */}
                         <button
                             type="button"
                             onClick={decreaseQuantity}
@@ -241,11 +343,16 @@ function ProductDetails({ productId = "body-creme" }) {
                             −
                         </button>
 
+
+                        {/* Display selected quantity */}
                         <span>{quantity}</span>
 
+
+                        {/* Increase quantity */}
                         <button
                             type="button"
                             onClick={increaseQuantity}
+                            disabled={quantity === 10}
                             aria-label="Increase quantity"
                         >
                             +
@@ -256,7 +363,7 @@ function ProductDetails({ productId = "body-creme" }) {
                 </div>
 
 
-                {/* Selected product summary */}
+                {/* Summary of customer selections */}
                 <p className="details-summary">
 
                     {quantity} × {product.name}
@@ -274,25 +381,42 @@ function ProductDetails({ productId = "body-creme" }) {
                 </p>
 
 
-                {/* Shopping bag functionality will be added later */}
+                {/*
+                    Add To Bag Button
+
+                    Adds the selected product
+                    to Brielle's shopping bag.
+                */}
+
                 <button
                     className="details-add-button"
                     type="button"
-                    disabled
+                    onClick={handleAddToBag}
                 >
-                    ADD TO BAG — COMING SOON
+                    ADD TO BAG
                 </button>
 
+
+                {/* Continue shopping link */}
                 <p className="details-note">
-                    Online purchasing is coming soon.
+                    Your selections will be saved
+                    in your shopping bag.
                 </p>
+
+                <Link
+                    to="/bag"
+                    className="details-back"
+                >
+                    VIEW SHOPPING BAG
+                </Link>
 
             </div>
 
         </section>
+
     );
 }
 
 
-// Makes ProductDetails available to App.jsx
+// Export the component to App.jsx
 export default ProductDetails;

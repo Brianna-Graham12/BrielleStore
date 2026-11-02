@@ -109,3 +109,25 @@
         font-size: 20px;
     }
 }
+
+
+/* Style product page links as buttons */
+.shop-view-button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 13px 22px;
+
+    background: transparent;
+    border: 1px solid #38251D;
+
+    color: #38251D;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.shop-view-button:hover {
+    background: #38251D;
+    color: #FFFFFF;
+}

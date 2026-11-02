@@ -6,16 +6,18 @@
     Author: Brianna Graham
 
     Description:
-    Displays Brielle's skincare collection.
+    Displays Brielle's product collection.
 
-    Each product card has a button that
-    opens the selected product's details.
+    Each product links to its own page
+    using React Router.
 */
 
+import { Link } from "react-router";
 import { products } from "../data/products";
 import "./Shop.css";
 
-function Shop({ onSelectProduct }) {
+
+function Shop() {
 
     return (
         <section id="shop" className="shop-section">
@@ -39,6 +41,7 @@ function Shop({ onSelectProduct }) {
                         className="product-card"
                     >
 
+                        {/* Temporary product visual */}
                         <div className="product-image">
                             <span className="shop-image-label">
                                 BRIELLE
@@ -56,19 +59,16 @@ function Shop({ onSelectProduct }) {
                         </p>
 
                         <p className="product-price">
-                            {product.sizes.length > 1 ? "From " : ""}
                             ${product.sizes[0].price.toFixed(2)}
                         </p>
 
-                        <button
-                            type="button"
+                        {/* Opens the product's own page */}
+                        <Link
+                            to={`/shop/${product.id}`}
                             className="shop-view-button"
-                            onClick={() =>
-                                onSelectProduct(product.id)
-                            }
                         >
                             VIEW PRODUCT
-                        </button>
+                        </Link>
 
                     </article>
 

@@ -1,0 +1,471 @@
+
+/*
+    BRIELLE SKINCARE WEBSITE
+
+    File: OurStory.css
+    Author: Brianna Graham
+
+    Description:
+    Editorial styling for Brielle's story page.
+
+    Typography:
+    Cormorant Infant for headings.
+    Inter for body text.
+
+    Colors:
+    Olive, ivory, warm stone, and espresso.
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;450;500;600&display=swap");
+
+
+/* Story page color palette */
+
+.brielle-story-page {
+    --story-olive: #303b30;
+    --story-olive-light: #455144;
+    --story-ivory: #f6f1e8;
+    --story-stone: #d9d3c8;
+    --story-taupe: #b8aa97;
+    --story-espresso: #302c28;
+
+    width: 100%;
+    overflow: hidden;
+    background: var(--story-ivory);
+    font-family: "Inter", Arial, sans-serif;
+}
+
+.brielle-story-page *,
+.brielle-story-page *::before,
+.brielle-story-page *::after {
+    box-sizing: border-box;
+}
+
+
+/* Reset default styles only on this page */
+
+.brielle-story-page h1,
+.brielle-story-page h2,
+.brielle-story-page h3,
+.brielle-story-page p {
+    margin-top: 0;
+}
+
+.brielle-story-page h1,
+.brielle-story-page h2,
+.brielle-story-page h3 {
+    font-family: "Cormorant Infant", Georgia, serif;
+    font-weight: 500;
+}
+
+.brielle-story-page a {
+    text-decoration: none;
+}
+
+.brielle-story-eyebrow {
+    font-family: "Inter", Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.19em;
+    text-transform: uppercase;
+}
+
+
+/* Main olive story section */
+
+.brielle-story-hero {
+    background: var(--story-olive);
+    color: var(--story-ivory);
+    padding: 115px 7% 125px;
+}
+
+.brielle-story-inner {
+    display: grid;
+    grid-template-columns: 1.08fr 0.92fr;
+    gap: clamp(50px, 7vw, 125px);
+    align-items: center;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.brielle-story-copy {
+    max-width: 610px;
+}
+
+.brielle-story-copy .brielle-story-eyebrow {
+    color: var(--story-taupe);
+    margin-bottom: 35px;
+}
+
+.brielle-story-copy h1 {
+    color: var(--story-ivory);
+    font-size: clamp(55px, 5.6vw, 94px);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    margin-bottom: 42px;
+}
+
+.brielle-story-copy h1 em {
+    display: block;
+    font-weight: 400;
+    color: var(--story-stone);
+    padding-top: 10px;
+}
+
+.brielle-story-copy p {
+    color: #e7e0d5;
+    font-family: "Inter", Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.95;
+    margin-bottom: 23px;
+}
+
+.brielle-story-copy .brielle-story-lead {
+    font-family: "Cormorant Infant", Georgia, serif;
+    font-size: clamp(25px, 2.4vw, 34px);
+    line-height: 1.35;
+    color: var(--story-ivory);
+    margin-bottom: 28px;
+}
+
+.brielle-story-signature {
+    margin-top: 45px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(246, 241, 232, 0.25);
+}
+
+.brielle-story-signature span {
+    display: block;
+    font-family: "Cormorant Infant", Georgia, serif;
+    font-size: 31px;
+    font-style: italic;
+    color: var(--story-ivory);
+    margin-bottom: 8px;
+}
+
+.brielle-story-signature p {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    color: var(--story-taupe);
+    margin: 0;
+}
+
+
+/* Editorial visual alongside founder story */
+
+.brielle-story-visual {
+    min-height: 650px;
+    background:
+        radial-gradient(
+            circle at 45% 35%,
+            rgba(255, 255, 255, 0.08),
+            transparent 42%
+        ),
+        linear-gradient(
+            145deg,
+            #a79a87 0%,
+            #8e846f 38%,
+            #665e50 100%
+        );
+    padding: 23px;
+    display: flex;
+}
+
+.brielle-story-visual-inner {
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    padding: 32px 20px;
+}
+
+.brielle-story-visual-small,
+.brielle-story-visual-footer {
+    font-family: "Inter", Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: #fffaf2;
+    margin: 0;
+}
+
+.brielle-story-visual-mark {
+    font-family: "Cormorant Infant", Georgia, serif;
+    font-size: clamp(140px, 18vw, 280px);
+    font-weight: 400;
+    line-height: 1;
+    color: rgba(255, 250, 242, 0.72);
+    margin: auto 0 5px;
+}
+
+.brielle-story-visual-quote {
+    font-family: "Cormorant Infant", Georgia, serif;
+    font-size: clamp(24px, 2.2vw, 38px);
+    font-style: italic;
+    line-height: 1.3;
+    color: #fffaf2;
+    margin: 0 auto auto;
+}
+
+
+/* Our Philosophy section */
+
+.brielle-philosophy {
+    background: var(--story-stone);
+    color: var(--story-espresso);
+    padding: 115px 7%;
+}
+
+.brielle-philosophy-inner {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: clamp(45px, 7vw, 130px);
+}
+
+.brielle-philosophy-heading .brielle-story-eyebrow {
+    color: #645c52;
+    margin-bottom: 25px;
+}
+
+.brielle-philosophy h2,
+.brielle-values h2,
+.brielle-story-ending h2 {
+    font-size: clamp(50px, 5vw, 82px);
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+}
+
+.brielle-philosophy h2 {
+    color: var(--story-espresso);
+}
+
+.brielle-philosophy h2 em,
+.brielle-values h2 em {
+    display: block;
+    font-weight: 400;
+}
+
+.brielle-philosophy-text {
+    padding-top: 43px;
+}
+
+.brielle-philosophy-text p {
+    font-size: 14px;
+    line-height: 2;
+    color: #4f4b43;
+    margin-bottom: 24px;
+}
+
+
+/* Three brand values */
+
+.brielle-values {
+    background: var(--story-ivory);
+    color: var(--story-espresso);
+    padding: 120px 7% 130px;
+}
+
+.brielle-values-inner {
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.brielle-values .brielle-story-eyebrow {
+    color: #847566;
+    margin-bottom: 23px;
+}
+
+.brielle-values h2 {
+    margin-bottom: 65px;
+}
+
+.brielle-values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 42px;
+}
+
+.brielle-value {
+    border-top: 1px solid #a9a197;
+    padding-top: 23px;
+}
+
+.brielle-value span {
+    display: block;
+    font-size: 11px;
+    color: #807166;
+    margin-bottom: 42px;
+}
+
+.brielle-value h3 {
+    font-size: 33px;
+    line-height: 1.15;
+    color: var(--story-espresso);
+    margin-bottom: 15px;
+}
+
+.brielle-value p {
+    max-width: 330px;
+    font-family: "Inter", Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.9;
+    color: #60574f;
+}
+
+
+/* Final collection call to action */
+
+.brielle-story-ending {
+    background: var(--story-olive-light);
+    text-align: center;
+    padding: 120px 24px 130px;
+    color: var(--story-ivory);
+}
+
+.brielle-story-ending .brielle-story-eyebrow {
+    color: var(--story-stone);
+    margin-bottom: 25px;
+}
+
+.brielle-story-ending h2 {
+    max-width: 850px;
+    margin: 0 auto 25px;
+    color: var(--story-ivory);
+}
+
+.brielle-story-ending h2 em {
+    font-weight: 400;
+    color: var(--story-stone);
+}
+
+.brielle-story-ending > p:not(.brielle-story-eyebrow) {
+    color: #e7e0d5;
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 35px;
+}
+
+.brielle-story-page .brielle-story-button,
+.brielle-story-page .brielle-story-button:visited {
+    display: inline-block;
+    background: var(--story-ivory);
+    color: var(--story-espresso);
+    padding: 19px 33px;
+    border: 1px solid var(--story-ivory);
+    font-family: "Inter", Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    transition:
+        background 0.25s ease,
+        color 0.25s ease;
+}
+
+.brielle-story-page .brielle-story-button:hover {
+    background: transparent;
+    color: var(--story-ivory);
+}
+
+
+/* Tablet layouts */
+
+@media (max-width: 1000px) {
+
+    .brielle-story-inner {
+        grid-template-columns: 1fr 0.85fr;
+        gap: 35px;
+    }
+
+    .brielle-story-hero {
+        padding: 85px 5%;
+    }
+
+    .brielle-story-visual {
+        min-height: 510px;
+    }
+
+    .brielle-philosophy,
+    .brielle-values {
+        padding: 90px 5%;
+    }
+
+    .brielle-values-grid {
+        gap: 24px;
+    }
+
+}
+
+
+/* Mobile layouts */
+
+@media (max-width: 760px) {
+
+    .brielle-story-inner,
+    .brielle-philosophy-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .brielle-story-hero {
+        padding: 70px 7% 85px;
+    }
+
+    .brielle-story-copy h1 {
+        font-size: clamp(52px, 12vw, 75px);
+    }
+
+    .brielle-story-copy p {
+        font-size: 14px;
+    }
+
+    .brielle-story-visual {
+        min-height: 460px;
+        margin-top: 15px;
+    }
+
+    .brielle-story-visual-mark {
+        font-size: 180px;
+    }
+
+    .brielle-philosophy,
+    .brielle-values {
+        padding: 80px 7%;
+    }
+
+    .brielle-philosophy-text {
+        padding-top: 0;
+    }
+
+    .brielle-values-grid {
+        grid-template-columns: 1fr;
+        gap: 42px;
+    }
+
+    .brielle-value span {
+        margin-bottom: 23px;
+    }
+
+    .brielle-story-ending {
+        padding: 90px 7%;
+    }
+
+    .brielle-story-ending h2 {
+        font-size: 53px;
+    }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .brielle-story-page *,
+    .brielle-story-page *::before,
+    .brielle-story-page *::after {
+        scroll-behavior: auto;
+        transition: none;
+    }
+
+}

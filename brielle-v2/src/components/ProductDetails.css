@@ -274,3 +274,17 @@
     }
 
 }
+
+/* Return to the Shop page */
+.details-back {
+    display: inline-block;
+    margin-bottom: 25px;
+    color: #70584A;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.details-back:hover {
+    text-decoration: underline;
+}
+
